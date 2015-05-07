@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "skAmazon.com";
+    ViewBag.LoggedIn = true;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        (function () {
+            $(".item").addClass("items-lg");
+        })();
+    })
+</script>
+<div class="row">
+    <div class="main-content col-sm-8 col-sm-push-4 col-md-9 col-md-push-3 col-lg-10 col-lg-push-2">
+        @Html.Partial("_MainContentTopBar")
+        <div class="browse-item-wrapper row">
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+            <div class="col-sm-2 col-xs-4 item">
+                Item Here
+            </div>
+        </div>
+    </div>
+    <div class="sidebar col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9 col-lg-2 col-lg-pull-10">
+        <ul>
+            <li><a href="#">Link List</a></li>
+            <li><a href="#">Link List</a></li>
+            <li><a href="#">Link List</a></li>
+            <li>
+                <ul>
+                    <li><a href="#">Link List</a></li>
+                    <li><a href="#">Link List</a></li>
+                    <li><a href="#">Link List</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Link List</a></li>
+            <li>
+                <ul>
+                    <li><a href="#">Link List</a></li>
+                    <li><a href="#">Link List</a></li>
+                    <li><a href="#">Link List</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

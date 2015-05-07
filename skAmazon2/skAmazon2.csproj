@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{330F8F1E-8187-46C7-97D5-770B0E4BC029}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>skAmazon2</RootNamespace>
+    <AssemblyName>skAmazon2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerAddress.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerOrder.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Manufacturer.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderLineItem.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentMethod.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Permission.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SavedItem.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShippingOption.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skAmazon2Entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>skAmazon2Entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skAmazon2Entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skAmazon2Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skAmazonUser.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skAmazonUserPassword.cs">
+      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flat-ui\.gitignore" />
+    <Content Include="Content\flat-ui\dist\css\flat-ui.css" />
+    <Content Include="Content\flat-ui\dist\css\flat-ui.min.css" />
+    <Content Include="Content\flat-ui\dist\css\vendor\bootstrap.min.css" />
+    <Content Include="Content\flat-ui\dist\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-black.svg" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bold.svg" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-italic.svg" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-light.svg" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-regular.svg" />
+    <Content Include="Content\flat-ui\dist\img\favicon.ico" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Book.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Calendar.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Chat.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Clipboard.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Compas.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Gift-Box.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Infinity-Loop.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Mail.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Map.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Pensils.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Pocket.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Retina-Ready.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Toilet-Paper.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\png\Watches.png" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\book.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\calendar.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\chat.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\clipboard.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\clocks.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\compas.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\gift-box.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\loop.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\mail.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\map.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\paper-bag.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\pencils.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\retina.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\ribbon.svg" />
+    <Content Include="Content\flat-ui\dist\img\icons\svg\toilet-paper.svg" />
+    <Content Include="Content\flat-ui\dist\img\login\icon.png" />
+    <Content Include="Content\flat-ui\dist\img\login\imac-2x.png" />
+    <Content Include="Content\flat-ui\dist\img\login\imac.png" />
+    <Content Include="Content\flat-ui\dist\img\tile\ribbon-2x.png" />
+    <Content Include="Content\flat-ui\dist\img\tile\ribbon.png" />
+    <Content Include="Content\flat-ui\dist\index.html" />
+    <Content Include="Content\flat-ui\dist\js\flat-ui.js" />
+    <Content Include="Content\flat-ui\dist\js\flat-ui.min.js" />
+    <Content Include="Content\flat-ui\dist\js\vendor\html5shiv.js" />
+    <Content Include="Content\flat-ui\dist\js\vendor\jquery.min.js" />
+    <Content Include="Content\flat-ui\dist\js\vendor\respond.min.js" />
+    <Content Include="Content\flat-ui\dist\js\vendor\video-js.swf" />
+    <Content Include="Content\flat-ui\dist\js\vendor\video.js" />
+    <Content Include="Content\flat-ui\docs\assets\css\demo.css" />
+    <Content Include="Content\flat-ui\docs\assets\css\docs.css" />
+    <Content Include="Content\flat-ui\docs\assets\css\src\demo.css" />
+    <Content Include="Content\flat-ui\docs\assets\css\src\docs.css" />
+    <Content Include="Content\flat-ui\docs\assets\css\src\prettyprint.css" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-2x.png" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-author.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-pic-1.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-pic-2.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-pic-3.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-pic-4.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-pic-5.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser-pic-6.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\browser.png" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\html-icon.png" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\logo-mask-2x.png" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\logo-mask.png" />
+    <Content Include="Content\flat-ui\docs\assets\img\demo\video.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\example-image.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\footer\logo.png" />
+    <Content Include="Content\flat-ui\docs\assets\img\getting-started\icomoon_import.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\img\video\poster.jpg" />
+    <Content Include="Content\flat-ui\docs\assets\js\application.js" />
+    <Content Include="Content\flat-ui\docs\assets\js\prettify.js" />
+    <Content Include="Content\flat-ui\docs\components.html" />
+    <Content Include="Content\flat-ui\docs\examples\buttons.html" />
+    <Content Include="Content\flat-ui\docs\examples\dropdowns.html" />
+    <Content Include="Content\flat-ui\docs\examples\forms.html" />
+    <Content Include="Content\flat-ui\docs\examples\navbar-fixed-top.html" />
+    <Content Include="Content\flat-ui\docs\examples\navbar-static-top.html" />
+    <Content Include="Content\flat-ui\docs\examples\navbars-with-elements.html" />
+    <Content Include="Content\flat-ui\docs\examples\navbars.html" />
+    <Content Include="Content\flat-ui\docs\examples\pagination.html" />
+    <Content Include="Content\flat-ui\docs\examples\radiocheck.html" />
+    <Content Include="Content\flat-ui\docs\examples\select.html" />
+    <Content Include="Content\flat-ui\docs\examples\switches.html" />
+    <Content Include="Content\flat-ui\docs\examples\tagsinput.html" />
+    <Content Include="Content\flat-ui\docs\examples\thumbnails.html" />
+    <Content Include="Content\flat-ui\docs\examples\tiles.html" />
+    <Content Include="Content\flat-ui\docs\examples\todo-list.html" />
+    <Content Include="Content\flat-ui\docs\examples\tooltips.html" />
+    <Content Include="Content\flat-ui\docs\examples\typography.html" />
+    <Content Include="Content\flat-ui\docs\examples\vertical-slider.html" />
+    <Content Include="Content\flat-ui\docs\getting-started.html" />
+    <Content Include="Content\flat-ui\docs\template.html" />
+    <Content Include="Content\flat-ui\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-black.svg" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bold.svg" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-italic.svg" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-light.svg" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-regular.svg" />
+    <Content Include="Content\flat-ui\Gruntfile.js" />
+    <Content Include="Content\flat-ui\img\favicon.ico" />
+    <Content Include="Content\flat-ui\img\icons\png\Book.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Calendar.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Chat.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Clipboard.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Compas.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Gift-Box.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Infinity-Loop.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Mail.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Map.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Pensils.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Pocket.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Retina-Ready.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Toilet-Paper.png" />
+    <Content Include="Content\flat-ui\img\icons\png\Watches.png" />
+    <Content Include="Content\flat-ui\img\icons\svg\book.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\calendar.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\chat.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\clipboard.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\clocks.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\compas.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\gift-box.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\loop.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\mail.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\map.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\paper-bag.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\pencils.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\retina.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\ribbon.svg" />
+    <Content Include="Content\flat-ui\img\icons\svg\toilet-paper.svg" />
+    <Content Include="Content\flat-ui\img\login\icon.png" />
+    <Content Include="Content\flat-ui\img\login\imac-2x.png" />
+    <Content Include="Content\flat-ui\img\login\imac.png" />
+    <Content Include="Content\flat-ui\img\tile\ribbon-2x.png" />
+    <Content Include="Content\flat-ui\img\tile\ribbon.png" />
+    <Content Include="Content\flat-ui\index.html" />
+    <Content Include="Content\flat-ui\js\radiocheck.js" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\icon_Widget2.jpg" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\Style.css" />
+    <Content Include="Content\visacard.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\skAmazon2Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>skAmazon2Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\skAmazon2Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
+      <LastGenOutput>skAmazon2Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\skAmazon2Entities.edmx.diagram">
+      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\skAmazon2Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
+      <LastGenOutput>skAmazon2Entities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\flat-ui\.editorconfig" />
+    <Content Include="Content\flat-ui\bower.json" />
+    <Content Include="Content\flat-ui\CHANGELOG.md" />
+    <Content Include="Content\flat-ui\dist\css\flat-ui.css.map" />
+    <Content Include="Content\flat-ui\dist\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="Content\flat-ui\dist\fonts\glyphicons\selection.json" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-black.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-black.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-black.woff" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bold.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bold.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bold.woff" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-italic.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-italic.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-italic.woff" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-light.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-light.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-light.woff" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-regular.eot" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-regular.ttf" />
+    <Content Include="Content\flat-ui\dist\fonts\lato\lato-regular.woff" />
+    <Content Include="Content\flat-ui\dist\js\vendor\jquery.min.map" />
+    <Content Include="Content\flat-ui\docs\assets\css\demo.css.map" />
+    <Content Include="Content\flat-ui\docs\assets\css\docs.css.map" />
+    <Content Include="Content\flat-ui\docs\assets\css\src\demo.less" />
+    <Content Include="Content\flat-ui\docs\assets\css\src\docs.less" />
+    <Content Include="Content\flat-ui\docs\assets\css\src\prettyprint.less" />
+    <Content Include="Content\flat-ui\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="Content\flat-ui\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="Content\flat-ui\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="Content\flat-ui\fonts\glyphicons\selection.json" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-black.eot" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-black.ttf" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-black.woff" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bold.eot" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bold.ttf" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bold.woff" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-italic.eot" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-italic.ttf" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-italic.woff" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-light.eot" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-light.ttf" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-light.woff" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-regular.eot" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-regular.ttf" />
+    <Content Include="Content\flat-ui\fonts\lato\lato-regular.woff" />
+    <Content Include="Content\flat-ui\js\.jscs.json" />
+    <Content Include="Content\flat-ui\js\.jshintrc" />
+    <Content Include="Content\flat-ui\less\.csscomb.json" />
+    <Content Include="Content\flat-ui\less\.csslintrc" />
+    <Content Include="Content\flat-ui\less\flat-ui.less" />
+    <Content Include="Content\flat-ui\less\mixins.less" />
+    <Content Include="Content\flat-ui\less\mixins\background-clip.less" />
+    <Content Include="Content\flat-ui\less\mixins\background-variant.less" />
+    <Content Include="Content\flat-ui\less\mixins\border-radius.less" />
+    <Content Include="Content\flat-ui\less\mixins\buttons.less" />
+    <Content Include="Content\flat-ui\less\mixins\center-block.less" />
+    <Content Include="Content\flat-ui\less\mixins\clearfix.less" />
+    <Content Include="Content\flat-ui\less\mixins\forms.less" />
+    <Content Include="Content\flat-ui\less\mixins\gradients.less" />
+    <Content Include="Content\flat-ui\less\mixins\grid.less" />
+    <Content Include="Content\flat-ui\less\mixins\hide-text.less" />
+    <Content Include="Content\flat-ui\less\mixins\image.less" />
+    <Content Include="Content\flat-ui\less\mixins\nav-divider.less" />
+    <Content Include="Content\flat-ui\less\mixins\navbar-vertical-align.less" />
+    <Content Include="Content\flat-ui\less\mixins\opacity.less" />
+    <Content Include="Content\flat-ui\less\mixins\pagination.less" />
+    <Content Include="Content\flat-ui\less\mixins\pallets.less" />
+    <Content Include="Content\flat-ui\less\mixins\reset-filter.less" />
+    <Content Include="Content\flat-ui\less\mixins\resize.less" />
+    <Content Include="Content\flat-ui\less\mixins\responsive-visibility.less" />
+    <Content Include="Content\flat-ui\less\mixins\select.less" />
+    <Content Include="Content\flat-ui\less\mixins\size.less" />
+    <Content Include="Content\flat-ui\less\mixins\switches.less" />
+    <Content Include="Content\flat-ui\less\mixins\tab-focus.less" />
+    <Content Include="Content\flat-ui\less\mixins\text-emphasis.less" />
+    <Content Include="Content\flat-ui\less\mixins\text-overflow.less" />
+    <Content Include="Content\flat-ui\less\mixins\vendor-prefixes.less" />
+    <Content Include="Content\flat-ui\less\modules\button-groups.less" />
+    <Content Include="Content\flat-ui\less\modules\buttons.less" />
+    <Content Include="Content\flat-ui\less\modules\code.less" />
+    <Content Include="Content\flat-ui\less\modules\dropdowns.less" />
+    <Content Include="Content\flat-ui\less\modules\footer.less" />
+    <Content Include="Content\flat-ui\less\modules\forms.less" />
+    <Content Include="Content\flat-ui\less\modules\glyphicons.less" />
+    <Content Include="Content\flat-ui\less\modules\input-groups.less" />
+    <Content Include="Content\flat-ui\less\modules\local-fonts.less" />
+    <Content Include="Content\flat-ui\less\modules\login.less" />
+    <Content Include="Content\flat-ui\less\modules\navbar.less" />
+    <Content Include="Content\flat-ui\less\modules\pager.less" />
+    <Content Include="Content\flat-ui\less\modules\pagination.less" />
+    <Content Include="Content\flat-ui\less\modules\palette.less" />
+    <Content Include="Content\flat-ui\less\modules\print.less" />
+    <Content Include="Content\flat-ui\less\modules\progress-bars.less" />
+    <Content Include="Content\flat-ui\less\modules\radiocheck.less" />
+    <Content Include="Content\flat-ui\less\modules\scaffolding.less" />
+    <Content Include="Content\flat-ui\less\modules\select.less" />
+    <Content Include="Content\flat-ui\less\modules\share.less" />
+    <Content Include="Content\flat-ui\less\modules\slider.less" />
+    <Content Include="Content\flat-ui\less\modules\switch.less" />
+    <Content Include="Content\flat-ui\less\modules\tagsinput.less" />
+    <Content Include="Content\flat-ui\less\modules\thumbnails.less" />
+    <Content Include="Content\flat-ui\less\modules\tiles.less" />
+    <Content Include="Content\flat-ui\less\modules\todo-list.less" />
+    <Content Include="Content\flat-ui\less\modules\tooltip.less" />
+    <Content Include="Content\flat-ui\less\modules\type.less" />
+    <Content Include="Content\flat-ui\less\modules\typeahead.less" />
+    <Content Include="Content\flat-ui\less\modules\video.less" />
+    <Content Include="Content\flat-ui\less\spaces.less" />
+    <Content Include="Content\flat-ui\less\variables.less" />
+    <Content Include="Content\flat-ui\package.json" />
+    <Content Include="Content\flat-ui\README.md" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\animated.less" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_HomeCarousel.cshtml" />
+    <Content Include="Views\Shared\_Browse.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_MainContentTopBar.cshtml" />
+    <Content Include="Views\Shared\_SearchBar.cshtml" />
+    <Content Include="Views\Shared\_Spacer.cshtml" />
+    <Content Include="Views\Shared\_UserNavigation.cshtml" />
+    <Content Include="Views\Home\Browse.cshtml" />
+    <Content Include="Views\Home\BrowseOrig.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\UserAccount.cshtml" />
+    <Content Include="Views\Account\UserAccount.cshtml" />
+    <Content Include="Views\Account\ViewCart.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>43062</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:43062/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

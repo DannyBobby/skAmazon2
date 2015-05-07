@@ -1,0 +1,60 @@
+﻿@if (ViewBag.LoggedIn == false)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="#">Log In</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="fa fa-shopping-cart"></span><span class="hidden-lg hidden-md hidden-sm"> Cart</span><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu navbar-dropdown">
+                <li class="cart-item">
+                    <a href="#">
+                        <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
+                        <div class="cart-item-desc">
+                            <span class="cart-item-title">Item Title Goes Here!</span><br />
+                            <span class="cart-item-qty">Quantity: 1</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="cart-item">
+                    <a href="#">
+                        <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
+                        <div class="cart-item-desc">
+                            <span class="cart-item-title">A Second Item!</span><br />
+                            <span class="cart-item-qty">Quantity: 2</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="cart-item">
+                    <a href="#">
+                        <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
+                        <div class="cart-item-desc">
+                            <span class="cart-item-title">Really Long Item Name!</span><br />
+                            <span class="cart-item-qty">Quantity: 3</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li class="hidden-xs"><a href="#viewCart" class="text-center">View Cart</a></li>
+                <li class="hidden-lg hidden-md hidden-sm"><a href="#viewCart">View Cart</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span><span class="hidden-lg hidden-md hidden-sm"> User</span><span class="caret"></span></a>
+            <ul class="dropdown-menu navbar-dropdown">
+                <li><a href="#"><span class="fa fa-list-alt icon-left-menu"></span><span>Lists</span></a></li>
+                <li><a href="#"><span class="fa fa-cog icon-left-menu"></span><span>Account</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#"><span class="fa fa-lock icon-left-menu"></span><span>Log Out</span></a></li>
+            </ul>
+        </li>
+    </ul>
+}
+

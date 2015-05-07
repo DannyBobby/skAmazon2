@@ -1,0 +1,51 @@
+﻿@model skAmazon2.Models.skAmazonUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>skAmazonUser</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permission.PermissionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permission.PermissionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skAmazonUserPassword.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skAmazonUserPassword.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

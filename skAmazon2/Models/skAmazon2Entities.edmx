@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="skAmazonDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="ParentCategory" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerAddress">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddrLine1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddrLine2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerOrder">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DeliveryAddressID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManufName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManufStreetAddress" Type="varchar" MaxLength="50" />
+          <Property Name="ManufCity" Type="varchar" MaxLength="50" />
+          <Property Name="ManufState" Type="varchar" MaxLength="50" />
+          <Property Name="ManufZIP" Type="varchar" MaxLength="50" />
+          <Property Name="ManufWebsite" Type="varchar(max)" />
+          <Property Name="ManufPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ManufFaxNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderLineItem">
+          <Key>
+            <PropertyRef Name="LineItemID" />
+          </Key>
+          <Property Name="LineItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="ShippingOptionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BillingAddressID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PermissionDescription" Type="varchar" MaxLength="50" />
+          <Property Name="IsRegisteredCustomer" Type="bit" />
+          <Property Name="IsEmployee" Type="bit" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="QoH" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SavedItem">
+          <Key>
+            <PropertyRef Name="SavedItemId" />
+          </Key>
+          <Property Name="SavedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ListName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ShippingOption">
+          <Key>
+            <PropertyRef Name="ShippingOptionId" />
+          </Key>
+          <Property Name="ShippingOptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="ShippingPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skAmazonUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PermissionLevelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skAmazonUserPassword">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Address_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CustomerAddress">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Manufacturer">
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+          <End Role="CustomerOrder" Type="Self.CustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="CustomerOrder">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="CustomerOrder" Type="Self.CustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CustomerOrder">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineItem_Order">
+          <End Role="CustomerOrder" Type="Self.CustomerOrder" Multiplicity="1" />
+          <End Role="OrderLineItem" Type="Self.OrderLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerOrder">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderLineItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderLineItem" Type="Self.OrderLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="OrderLineItem">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineItem_ShippingOption">
+          <End Role="ShippingOption" Type="Self.ShippingOption" Multiplicity="1" />
+          <End Role="OrderLineItem" Type="Self.OrderLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShippingOption">
+              <PropertyRef Name="ShippingOptionId" />
+            </Principal>
+            <Dependent Role="OrderLineItem">
+              <PropertyRef Name="ShippingOptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMethod_Address">
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="1" />
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerAddress">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="PaymentMethod">
+              <PropertyRef Name="BillingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMethod_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PaymentMethod">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SavedItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SavedItem" Type="Self.SavedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="SavedItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SavedItem_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="SavedItem" Type="Self.SavedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SavedItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skAmazonUser_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="skAmazonUser">
+              <PropertyRef Name="PermissionLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skAmazonUserPassword_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="skAmazonUserPassword" Type="Self.skAmazonUserPassword" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="skAmazonUserPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="skAmazonDataModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerOrder" EntityType="Self.CustomerOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderLineItem" EntityType="Self.OrderLineItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SavedItem" EntityType="Self.SavedItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingOption" EntityType="Self.ShippingOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skAmazonUser" EntityType="Self.skAmazonUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skAmazonUserPassword" EntityType="Self.skAmazonUserPassword" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_skAmazonUser" Association="Self.FK_Address_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Manufacturer" Association="Self.FK_Item_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_PaymentMethod" Association="Self.FK_Order_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="CustomerOrder" EntitySet="CustomerOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_skAmazonUser" Association="Self.FK_Order_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+            <End Role="CustomerOrder" EntitySet="CustomerOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineItem_Order" Association="Self.FK_OrderLineItem_Order">
+            <End Role="CustomerOrder" EntitySet="CustomerOrder" />
+            <End Role="OrderLineItem" EntitySet="OrderLineItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineItem_Product" Association="Self.FK_OrderLineItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderLineItem" EntitySet="OrderLineItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineItem_ShippingOption" Association="Self.FK_OrderLineItem_ShippingOption">
+            <End Role="ShippingOption" EntitySet="ShippingOption" />
+            <End Role="OrderLineItem" EntitySet="OrderLineItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMethod_Address" Association="Self.FK_PaymentMethod_Address">
+            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMethod_skAmazonUser" Association="Self.FK_PaymentMethod_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SavedItem_Product" Association="Self.FK_SavedItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SavedItem" EntitySet="SavedItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SavedItem_skAmazonUser" Association="Self.FK_SavedItem_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+            <End Role="SavedItem" EntitySet="SavedItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skAmazonUser_Permission" Association="Self.FK_skAmazonUser_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skAmazonUserPassword_skAmazonUser" Association="Self.FK_skAmazonUserPassword_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+            <End Role="skAmazonUserPassword" EntitySet="skAmazonUserPassword" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="skAmazonDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParentCategory" Type="Int32" />
+          <NavigationProperty Name="Category1" Relationship="Self.FK_Category_Category" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Category2" Relationship="Self.FK_Category_Category" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Item_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="CustomerAddress">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddrLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddrLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="skAmazonUser" Relationship="Self.FK_Address_skAmazonUser" FromRole="CustomerAddress" ToRole="skAmazonUser" />
+          <NavigationProperty Name="PaymentMethods" Relationship="Self.FK_PaymentMethod_Address" FromRole="CustomerAddress" ToRole="PaymentMethod" />
+        </EntityType>
+        <EntityType Name="CustomerOrder">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryAddressID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_Order_PaymentMethod" FromRole="CustomerOrder" ToRole="PaymentMethod" />
+          <NavigationProperty Name="skAmazonUser" Relationship="Self.FK_Order_skAmazonUser" FromRole="CustomerOrder" ToRole="skAmazonUser" />
+          <NavigationProperty Name="OrderLineItems" Relationship="Self.FK_OrderLineItem_Order" FromRole="CustomerOrder" ToRole="OrderLineItem" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManufName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ManufStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufZIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufWebsite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ManufPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufFaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Item_Manufacturer" FromRole="Manufacturer" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderLineItem">
+          <Key>
+            <PropertyRef Name="LineItemID" />
+          </Key>
+          <Property Name="LineItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="ShippingOptionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerOrder" Relationship="Self.FK_OrderLineItem_Order" FromRole="OrderLineItem" ToRole="CustomerOrder" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderLineItem_Product" FromRole="OrderLineItem" ToRole="Product" />
+          <NavigationProperty Name="ShippingOption" Relationship="Self.FK_OrderLineItem_ShippingOption" FromRole="OrderLineItem" ToRole="ShippingOption" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BillingAddressID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerAddress" Relationship="Self.FK_PaymentMethod_Address" FromRole="PaymentMethod" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerOrders" Relationship="Self.FK_Order_PaymentMethod" FromRole="PaymentMethod" ToRole="CustomerOrder" />
+          <NavigationProperty Name="skAmazonUser" Relationship="Self.FK_PaymentMethod_skAmazonUser" FromRole="PaymentMethod" ToRole="skAmazonUser" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsRegisteredCustomer" Type="Boolean" />
+          <Property Name="IsEmployee" Type="Boolean" />
+          <NavigationProperty Name="skAmazonUsers" Relationship="Self.FK_skAmazonUser_Permission" FromRole="Permission" ToRole="skAmazonUser" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="QoH" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Item_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Item_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
+          <NavigationProperty Name="OrderLineItems" Relationship="Self.FK_OrderLineItem_Product" FromRole="Product" ToRole="OrderLineItem" />
+          <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_Product" FromRole="Product" ToRole="SavedItem" />
+        </EntityType>
+        <EntityType Name="SavedItem">
+          <Key>
+            <PropertyRef Name="SavedItemId" />
+          </Key>
+          <Property Name="SavedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ListName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SavedItem_Product" FromRole="SavedItem" ToRole="Product" />
+          <NavigationProperty Name="skAmazonUser" Relationship="Self.FK_SavedItem_skAmazonUser" FromRole="SavedItem" ToRole="skAmazonUser" />
+        </EntityType>
+        <EntityType Name="ShippingOption">
+          <Key>
+            <PropertyRef Name="ShippingOptionId" />
+          </Key>
+          <Property Name="ShippingOptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="OrderLineItems" Relationship="Self.FK_OrderLineItem_ShippingOption" FromRole="ShippingOption" ToRole="OrderLineItem" />
+        </EntityType>
+        <EntityType Name="skAmazonUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PermissionLevelID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK_Address_skAmazonUser" FromRole="skAmazonUser" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerOrders" Relationship="Self.FK_Order_skAmazonUser" FromRole="skAmazonUser" ToRole="CustomerOrder" />
+          <NavigationProperty Name="PaymentMethods" Relationship="Self.FK_PaymentMethod_skAmazonUser" FromRole="skAmazonUser" ToRole="PaymentMethod" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_skAmazonUser_Permission" FromRole="skAmazonUser" ToRole="Permission" />
+          <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_skAmazonUser" FromRole="skAmazonUser" ToRole="SavedItem" />
+          <NavigationProperty Name="skAmazonUserPassword" Relationship="Self.FK_skAmazonUserPassword_skAmazonUser" FromRole="skAmazonUser" ToRole="skAmazonUserPassword" />
+        </EntityType>
+        <EntityType Name="skAmazonUserPassword">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="skAmazonUser" Relationship="Self.FK_skAmazonUserPassword_skAmazonUser" FromRole="skAmazonUserPassword" ToRole="skAmazonUser" />
+        </EntityType>
+        <Association Name="FK_Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CustomerAddress">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMethod_Address">
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="1" />
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerAddress">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="PaymentMethod">
+              <PropertyRef Name="BillingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+          <End Role="CustomerOrder" Type="Self.CustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="CustomerOrder">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="CustomerOrder" Type="Self.CustomerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CustomerOrder">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineItem_Order">
+          <End Role="CustomerOrder" Type="Self.CustomerOrder" Multiplicity="1" />
+          <End Role="OrderLineItem" Type="Self.OrderLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerOrder">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderLineItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Manufacturer">
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderLineItem" Type="Self.OrderLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="OrderLineItem">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderLineItem_ShippingOption">
+          <End Role="ShippingOption" Type="Self.ShippingOption" Multiplicity="1" />
+          <End Role="OrderLineItem" Type="Self.OrderLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShippingOption">
+              <PropertyRef Name="ShippingOptionId" />
+            </Principal>
+            <Dependent Role="OrderLineItem">
+              <PropertyRef Name="ShippingOptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMethod_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PaymentMethod">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skAmazonUser_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="skAmazonUser">
+              <PropertyRef Name="PermissionLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SavedItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SavedItem" Type="Self.SavedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="SavedItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SavedItem_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="SavedItem" Type="Self.SavedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SavedItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skAmazonUserPassword_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="skAmazonUserPassword" Type="Self.skAmazonUserPassword" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="skAmazonUserPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="skAmazon5Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="CustomerAddresses" EntityType="Self.CustomerAddress" />
+          <EntitySet Name="CustomerOrders" EntityType="Self.CustomerOrder" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
+          <EntitySet Name="OrderLineItems" EntityType="Self.OrderLineItem" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="SavedItems" EntityType="Self.SavedItem" />
+          <EntitySet Name="ShippingOptions" EntityType="Self.ShippingOption" />
+          <EntitySet Name="skAmazonUsers" EntityType="Self.skAmazonUser" />
+          <EntitySet Name="skAmazonUserPasswords" EntityType="Self.skAmazonUserPassword" />
+          <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_skAmazonUser" Association="Self.FK_Address_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+            <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMethod_Address" Association="Self.FK_PaymentMethod_Address">
+            <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_PaymentMethod" Association="Self.FK_Order_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="CustomerOrder" EntitySet="CustomerOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_skAmazonUser" Association="Self.FK_Order_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+            <End Role="CustomerOrder" EntitySet="CustomerOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineItem_Order" Association="Self.FK_OrderLineItem_Order">
+            <End Role="CustomerOrder" EntitySet="CustomerOrders" />
+            <End Role="OrderLineItem" EntitySet="OrderLineItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Manufacturer" Association="Self.FK_Item_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineItem_Product" Association="Self.FK_OrderLineItem_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderLineItem" EntitySet="OrderLineItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderLineItem_ShippingOption" Association="Self.FK_OrderLineItem_ShippingOption">
+            <End Role="ShippingOption" EntitySet="ShippingOptions" />
+            <End Role="OrderLineItem" EntitySet="OrderLineItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMethod_skAmazonUser" Association="Self.FK_PaymentMethod_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skAmazonUser_Permission" Association="Self.FK_skAmazonUser_Permission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SavedItem_Product" Association="Self.FK_SavedItem_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SavedItem" EntitySet="SavedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SavedItem_skAmazonUser" Association="Self.FK_SavedItem_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+            <End Role="SavedItem" EntitySet="SavedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skAmazonUserPassword_skAmazonUser" Association="Self.FK_skAmazonUserPassword_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+            <End Role="skAmazonUserPassword" EntitySet="skAmazonUserPasswords" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="skAmazonDataModelStoreContainer" CdmEntityContainer="skAmazon5Entities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="skAmazonDataModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="ParentCategory" ColumnName="ParentCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerAddresses">
+            <EntityTypeMapping TypeName="skAmazonDataModel.CustomerAddress">
+              <MappingFragment StoreEntitySet="CustomerAddress">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="AddrLine1" ColumnName="AddrLine1" />
+                <ScalarProperty Name="AddrLine2" ColumnName="AddrLine2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerOrders">
+            <EntityTypeMapping TypeName="skAmazonDataModel.CustomerOrder">
+              <MappingFragment StoreEntitySet="CustomerOrder">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DeliveryAddressID" ColumnName="DeliveryAddressID" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="skAmazonDataModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturer">
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="ManufName" ColumnName="ManufName" />
+                <ScalarProperty Name="ManufStreetAddress" ColumnName="ManufStreetAddress" />
+                <ScalarProperty Name="ManufCity" ColumnName="ManufCity" />
+                <ScalarProperty Name="ManufState" ColumnName="ManufState" />
+                <ScalarProperty Name="ManufZIP" ColumnName="ManufZIP" />
+                <ScalarProperty Name="ManufWebsite" ColumnName="ManufWebsite" />
+                <ScalarProperty Name="ManufPhoneNumber" ColumnName="ManufPhoneNumber" />
+                <ScalarProperty Name="ManufFaxNumber" ColumnName="ManufFaxNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLineItems">
+            <EntityTypeMapping TypeName="skAmazonDataModel.OrderLineItem">
+              <MappingFragment StoreEntitySet="OrderLineItem">
+                <ScalarProperty Name="LineItemID" ColumnName="LineItemID" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ShippingOptionID" ColumnName="ShippingOptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="skAmazonDataModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="BillingAddressID" ColumnName="BillingAddressID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="skAmazonDataModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="PermissionDescription" ColumnName="PermissionDescription" />
+                <ScalarProperty Name="IsRegisteredCustomer" ColumnName="IsRegisteredCustomer" />
+                <ScalarProperty Name="IsEmployee" ColumnName="IsEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="skAmazonDataModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="QoH" ColumnName="QoH" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SavedItems">
+            <EntityTypeMapping TypeName="skAmazonDataModel.SavedItem">
+              <MappingFragment StoreEntitySet="SavedItem">
+                <ScalarProperty Name="SavedItemId" ColumnName="SavedItemId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ListName" ColumnName="ListName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingOptions">
+            <EntityTypeMapping TypeName="skAmazonDataModel.ShippingOption">
+              <MappingFragment StoreEntitySet="ShippingOption">
+                <ScalarProperty Name="ShippingOptionId" ColumnName="ShippingOptionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ShippingPrice" ColumnName="ShippingPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skAmazonUsers">
+            <EntityTypeMapping TypeName="skAmazonDataModel.skAmazonUser">
+              <MappingFragment StoreEntitySet="skAmazonUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="PermissionLevelID" ColumnName="PermissionLevelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skAmazonUserPasswords">
+            <EntityTypeMapping TypeName="skAmazonDataModel.skAmazonUserPassword">
+              <MappingFragment StoreEntitySet="skAmazonUserPassword">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

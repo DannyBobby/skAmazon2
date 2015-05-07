@@ -1,0 +1,103 @@
+﻿@model skAmazon2.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="product-blurb row">
+        <div class="product-images-carousel col-lg-8 col-sm-6 col-xs-12">
+            <div class="carousel slide article-slide" id="product-images-carousel">
+                <div class="carousel-inner cont-slider">
+
+                    <div class="item active">
+                        <img src="http://placehold.it/500x500/cccccc/ffffff">
+                    </div>
+                    <div class="item">
+                        <img src="http://placehold.it/1000x1500/999999/cccccc">
+                    </div>
+                    <div class="item">
+                        <img src="http://placehold.it/1500x1000/dddddd/333333">
+                    </div>
+                </div>
+
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li class="active" data-slide-to="0" data-target="#product-images-carousel">
+                        <div class="product-image-thumb" style="background-image: url('http://placehold.it/500x500/cccccc/ffffff');"></div>
+                        <span class="product-image-selected fa fa-caret-up"></span>
+                    </li>
+                    <li class="" data-slide-to="1" data-target="#product-images-carousel">
+                        <div class="product-image-thumb" style="background-image: url('http://placehold.it/1000x1500/999999/cccccc');"></div>
+                        <span class="product-image-selected fa fa-caret-up"></span>
+                    </li>
+                    <li class="" data-slide-to="2" data-target="#product-images-carousel">
+                        <div class="product-image-thumb" style="background-image: url('http://placehold.it/1500x1000/dddddd/333333');"></div>
+                        <span class="product-image-selected fa fa-caret-up"></span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UnitPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.QoH)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Rating)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Manufacturer.ManufName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Manufacturer.ManufName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.CategoryDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.CategoryDescription)
+                </dd>
+            </dl>            
+        </div>
+    </div>
+    @Html.Partial("_Spacer")
+    <div class="product-tabs row">
+        <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#details" aria-controls="home" role="tab" data-toggle="tab">Details</a></li>
+                <li role="presentation"><a href="#comments" aria-controls="profile" role="tab" data-toggle="tab">Comments</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="details">All the details go here!</div>
+                <div role="tabpanel" class="tab-pane fade" id="comments">All the comments go here!</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

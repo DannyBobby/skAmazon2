@@ -1,0 +1,408 @@
+﻿/* =========================== */
+/* ==== NAVBAR CUSTOM CSS ==== */
+/* =========================== */
+
+/* == CART == */
+/*cart item description*/
+.cart-item .cart-item-desc {
+    letter-spacing: 0;
+    line-height: .9;
+    vertical-align: top;
+    display: inline-block;
+}
+/*cart item title*/
+.cart-item .cart-item-title {
+    font-size: 1.15em;
+}
+/*cart item quantity*/
+.cart-item .cart-item-qty {
+    font-size: .75em;
+}
+
+/* == DROPDOWNS == */
+/*left icon in dropdown*/
+.icon-left-menu {
+    width: 16px;
+    text-align: center;
+    margin-right: 5px;
+    margin-left: -5px;
+}
+/*dropdown spacing on right*/
+.navbar-dropdown {
+    margin-right: 10px;
+}
+
+/* == LOGO == */
+/*make text smaller around the Amazon logo*/
+.navbar-header .navbar-brand .small {
+    font-size: 70%;
+}
+
+/* == SEARCH BAR == */
+/*when the media is big*/
+@media (min-width: 768px) {
+    /* center form w/ 200px on each side*/
+    .navbar-form {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+        /*stretch the search bar container to max width*/
+        .navbar-form .form-group-fw {
+            width: 100%;
+        }
+    /*no idea why this works, but necessary to let the search bar stretch*/
+    .navbar .input-group .input-group-btn-fw {
+        width: 1px;
+    }
+    /*stretch the actual search bar */
+    .navbar .input-group-fw {
+        width: 100%;
+    }
+    /*prevent the UserNavigation from having no spacing */
+    .navbar-collapse .navbar-nav.navbar-right:last-child {
+        margin-right: auto;
+    }
+}
+/*when the media is small*/
+@media (max-width: 767px) {
+    /*let the searchbar have 0 margin instead of negative margin (spacing)*/
+    .navbar-form {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* delete the spacer below the navbar and make it dynamic */
+.navbar {
+    margin-bottom: 0;
+}
+
+.spacer {
+    height: 30px;
+}
+
+/* =========================== */
+
+/* HOME CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
+#home-carousel-container .carousel {
+    height: 500px;
+    margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+#home-carousel-container .carousel-caption {
+    z-index: 10;
+}
+/* Declare heights because of positioning of img element */
+#home-carousel-container .carousel .item {
+    height: 500px;
+    background-color: #777;
+}
+
+#home-carousel-container .carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+}
+/* Put the chevrons in the middle and change their size */
+#home-carousel-container .carousel-control .fa-chevron-left,
+#home-carousel-container .carousel-control .fa-chevron-right,
+#home-carousel-container .carousel-control .fa-chevron-circle-left,
+#home-carousel-container .carousel-control .fa-chevron-circle-right {
+    position: absolute;
+    top: 50%;
+    font-size: 1.75em;
+}
+/*----------------------------------------------- */
+
+/* PRODUCT IMAGES CAROUSEL */
+/*----------------------------------------------- */
+#product-images-carousel .carousel-indicators {
+    bottom: 0;
+    left: 10px;
+    margin-left: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+#product-images-carousel .carousel-inner > .item {
+    height: 100%;
+}
+
+#product-images-carousel .carousel-inner > .item > img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#product-images-carousel .carousel-indicators li {
+    border: medium none;
+    border-radius: 0;
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 5px !important;
+    margin-top: 0;
+    width: 50px;
+    background-color: transparent;
+}
+#product-images-carousel .carousel-indicators .active .product-image-selected{
+    opacity: 100;
+    margin-top: 0;
+}
+
+#product-images-carousel .carousel-indicators li .product-image-selected {
+    color: #1ABC9C;
+    text-indent: 0;
+    text-align: center;
+    position: absolute;
+    width: 50px;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 700ms, margin-top 800ms;
+    -webkit-transition: opacity 700ms, margin-top 800ms;
+}
+
+.product-images-carousel,
+#product-images-carousel .carousel,
+#product-images-carousel .carousel-inner,
+#product-images-carousel .item,
+#product-images-carousel .item img {
+    max-height: 500px;
+}
+
+.product-image-thumb {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+/*----------------------------------------------- */
+
+/* FOOTER
+------------------------------------------------- */
+/*make the minimum height of the html the whole viewport*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+/*make a space for the footer at the bottom of the body*/
+body {
+    margin-bottom: 40px;
+}
+/*make the footer sticky to the bottom of the window*/
+/*also give it some formatting to look gewd*/
+.footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+    /* i forgot what this is supposed to do*/
+    .footer .container {
+        height: 40px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+/*----------------------------------------------- */
+
+/* MAIN-CONTENT-TOP-BAR */
+/*----------------------------------------------- */
+/* make top bar width of column*/
+.main-content-top-bar {
+    width: 100%;
+}
+/* float the browse image tabs*/
+.browse-sizer {
+    float: right;
+}
+    /* style buttons on sizer*/
+    .browse-sizer .btn {
+        padding: 8px;
+        line-height: 1;
+        font-size: 1.25em;
+        vertical-align: middle;
+    }
+
+        .browse-sizer .btn:first-child {
+            padding-left: 13px;
+        }
+
+        .browse-sizer .btn:last-child {
+            padding-right: 13px;
+        }
+
+    .browse-sizer span:before {
+        vertical-align: middle;
+    }
+/* breadcrumbs styler */
+.breadcrumbs {
+    font-size: .75em;
+}
+
+    .breadcrumbs a:last-child {
+        color: #2980B9;
+    }
+/*----------------------------------------------- */
+
+/* BROWSE */
+/*----------------------------------------------- */
+.main-content {
+    background-color: none;
+    height: 100%;
+}
+
+.sidebar {
+    background-color: none;
+    color: white;    
+    height: 100%;
+}
+
+.browse-item-wrapper {
+    text-align: center;
+}
+
+    .browse-item-wrapper div {
+        margin: 20px;
+        text-align: left;
+        display: inline-block;
+        float: none;
+    }
+
+    .browse-item-wrapper .item {
+        background-color: white;
+    }
+
+    .browse-item-wrapper .items-sm {
+        width: 120px;
+        height: 120px;
+    }
+
+    .browse-item-wrapper .items-md {
+        width: 180px;
+        height: 180px;
+    }
+
+    .browse-item-wrapper .items-lg {
+        width: 240px;
+        height: 240px;
+    }
+/*----------------------------------------------- */
+
+/* PRODUCT */
+/*----------------------------------------------- */
+.product-blurb {
+    display: block;
+}
+
+    .product-blurb .thumbnail {
+        height: 200px;
+        width: 200px;
+    }
+/*----------------------------------------------- */
+
+/* BREADCRUMBS - Courtesy of: http://bootsnipp.com/snippets/featured/triangle-breadcrumbs-arrows */
+.btn-breadcrumb .btn:not(:last-child):after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  left: 100%;
+  z-index: 3;
+}
+.btn-breadcrumb .btn:not(:last-child):before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid rgb(173, 173, 173);
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 3;
+}
+
+.btn-breadcrumb .btn {
+  padding:6px 12px 6px 24px;
+}
+.btn-breadcrumb .btn:first-child {
+  padding:6px 6px 6px 10px;
+}
+.btn-breadcrumb .btn:last-child {
+  padding:6px 18px 6px 24px;
+}
+
+/** Default button **/
+.btn-breadcrumb .btn.btn-default:not(:last-child):after {
+  border-left: 10px solid #fff;
+}
+.btn-breadcrumb .btn.btn-default:not(:last-child):before {
+  border-left: 10px solid #ccc;
+}
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
+  border-left: 10px solid #ebebeb;
+}
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
+  border-left: 10px solid #adadad;
+}
+
+/* The responsive part */
+
+.btn-breadcrumb > * > div {
+    /* With less: .text-overflow(); */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+
+.btn-breadcrumb > *:nth-child(n+2) {
+  display:none;
+}
+
+/* === For phones =================================== */
+@media (max-width: 767px) {
+    .btn-breadcrumb > *:nth-last-child(-n+2) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 60px;
+    }
+}
+
+/* === For tablets ================================== */
+@media (min-width: 768px) and (max-width:991px) {
+    .btn-breadcrumb > *:nth-last-child(-n+4) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 100px;
+    }
+}
+
+/* === For desktops ================================== */
+@media (min-width: 992px) {
+    .btn-breadcrumb > *:nth-last-child(-n+6) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 170px;
+    }
+}
