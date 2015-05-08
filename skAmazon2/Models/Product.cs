@@ -18,7 +18,6 @@ namespace skAmazon2.Models
         {
             this.OrderLineItems = new HashSet<OrderLineItem>();
             this.SavedItems = new HashSet<SavedItem>();
-            this.ProductComments = new HashSet<ProductComment>();
         }
     
         public int ItemID { get; set; }
@@ -33,6 +32,5 @@ namespace skAmazon2.Models
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
         public virtual ICollection<SavedItem> SavedItems { get; set; }
-        public virtual ICollection<ProductComment> ProductComments { get; set; }
     }
 }

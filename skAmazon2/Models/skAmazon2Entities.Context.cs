@@ -37,6 +37,5 @@ namespace skAmazon2.Models
         public virtual DbSet<ShippingOption> ShippingOptions { get; set; }
         public virtual DbSet<skAmazonUser> skAmazonUsers { get; set; }
         public virtual DbSet<skAmazonUserPassword> skAmazonUserPasswords { get; set; }
-        public virtual DbSet<ProductComment> ProductComments { get; set; }
     }
 }
