@@ -12,7 +12,7 @@ namespace skAmazon2.Controllers
 {
     public class ProductController : Controller
     {
-        private skAmazon5Entities db = new skAmazon5Entities();
+        private skAmazonEntities db = new skAmazonEntities();
 
         // GET: /Product/
         public ActionResult Index()
