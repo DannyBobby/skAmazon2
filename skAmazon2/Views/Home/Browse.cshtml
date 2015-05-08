@@ -130,8 +130,8 @@
                                     <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
                                     <h3 class="tile-title">@Html.DisplayFor(modelItem => item.ProductDescription)</h3>
                                     <p>Price: @Html.DisplayFor(modelItem => item.UnitPrice)</p>
-                                    <a class="btn btn-primary btn-large btn-block">Buy Now</a>
-                                    <a href =@Url.Action("Details", "Product", new { id = item.ItemID }) class="btn btn-primary btn-large btn-block">View Item</a>
+                                    <a href=@Url.Action("Details", "Product", new { id = item.ItemID }) class="btn btn-primary btn-large btn-block">View Item</a>
+                                    <a class="btn btn-primary btn-large btn-block">Buy Now</a>                                    
                                 </div>
                             </div>
                         }

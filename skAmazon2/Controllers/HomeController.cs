@@ -9,6 +9,8 @@ namespace skAmazon2.Controllers
 {
     public class HomeController : Controller
     {
+        private skAmazon5Entities db = new skAmazon5Entities();
+
         public ActionResult Index()
         {
             return View();
@@ -21,7 +23,9 @@ namespace skAmazon2.Controllers
 
         public ActionResult Home()
         {
-            return View();
+            var items = from i in db.Products select i;
+            
+            return View(items.ToList());
         }
 
         public ActionResult About()
