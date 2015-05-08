@@ -25,8 +25,6 @@ namespace skAmazon2.Controllers
             UserManager = userManager;
         }
 
-        
-
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         //
