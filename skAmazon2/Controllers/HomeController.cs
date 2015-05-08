@@ -9,7 +9,7 @@ namespace skAmazon2.Controllers
 {
     public class HomeController : Controller
     {
-        private skAmazon5Entities db = new skAmazon5Entities();
+        private skAmazonEntities db = new skAmazonEntities();
 
         public ActionResult Index()
         {

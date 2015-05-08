@@ -13,10 +13,10 @@ namespace skAmazon2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class skAmazon5Entities : DbContext
+    public partial class skAmazonEntities : DbContext
     {
-        public skAmazon5Entities()
-            : base("name=skAmazon5Entities")
+        public skAmazonEntities()
+            : base("name=skAmazonEntities")
         {
         }
     
@@ -33,9 +33,12 @@ namespace skAmazon2.Models
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductComment> ProductComments { get; set; }
+        public virtual DbSet<ProductImage> ProductImages { get; set; }
         public virtual DbSet<SavedItem> SavedItems { get; set; }
         public virtual DbSet<ShippingOption> ShippingOptions { get; set; }
         public virtual DbSet<skAmazonUser> skAmazonUsers { get; set; }
         public virtual DbSet<skAmazonUserPassword> skAmazonUserPasswords { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

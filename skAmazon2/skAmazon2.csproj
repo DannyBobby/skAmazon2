@@ -41,11 +41,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -171,56 +171,65 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerAddress.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerOrder.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Manufacturer.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderLineItem.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PaymentMethod.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Permission.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductComment.cs">
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductImage.cs">
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SavedItem.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShippingOption.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\skAmazon2Entities.Context.cs">
+    <Compile Include="Models\skAmazonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>skAmazon2Entities.Context.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\skAmazon2Entities.cs">
+    <Compile Include="Models\skAmazonModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\skAmazon2Entities.Designer.cs">
+    <Compile Include="Models\skAmazonModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
+      <DependentUpon>skAmazonModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\skAmazonUser.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\skAmazonUserPassword.cs">
-      <DependentUpon>skAmazon2Entities.tt</DependentUpon>
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -385,23 +394,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\skAmazon2Entities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>skAmazon2Entities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\skAmazon2Entities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
-      <LastGenOutput>skAmazon2Entities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\skAmazon2Entities.edmx.diagram">
-      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\skAmazon2Entities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>skAmazon2Entities.edmx</DependentUpon>
-      <LastGenOutput>skAmazon2Entities.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\flat-ui\.editorconfig" />
     <Content Include="Content\flat-ui\bower.json" />
     <Content Include="Content\flat-ui\CHANGELOG.md" />
@@ -553,6 +545,23 @@
     <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="Models\skAmazonModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>skAmazonModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\skAmazonModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>skAmazonModel.edmx</DependentUpon>
+      <LastGenOutput>skAmazonModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\skAmazonModel.edmx.diagram">
+      <DependentUpon>skAmazonModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\skAmazonModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>skAmazonModel.edmx</DependentUpon>
+      <LastGenOutput>skAmazonModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -604,7 +613,7 @@
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\UserAccount.cshtml" />
     <Content Include="Views\Account\UserAccount.cshtml" />
-    <Content Include="Views\Account\ViewCart.cshtml" />
+    <Content Include="Views\User\ViewCart.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />

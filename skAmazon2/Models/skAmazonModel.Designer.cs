@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Danny\Desktop\skAmazon2\skAmazon2\Models\skAmazon2Entities.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Tucker\Documents\GitHub\skAmazon2\skAmazon2\Models\skAmazonModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
