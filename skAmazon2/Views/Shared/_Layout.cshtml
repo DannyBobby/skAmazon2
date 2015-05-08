@@ -37,21 +37,14 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-01">
             @Html.Partial("_UserNavigation")
-            <div class="navbar-form hidden-xs">
-                @Html.BeginForm("Search", "Product")
-                {
-                    @Html.Partial("_SearchBar")
-                }
-
-            </div>
-        </div><!-- collapse -->
-        <div class="navbar-form hidden-sm hidden-md hidden-lg">
-            @Html.BeginForm("Search", "Product")
-                {
-                    @Html.Partial("_SearchBar")
-                }
-        </div>
-    </nav><!-- /navbar -->
+            <form class="navbar-form hidden-xs" action="/Product/Search" role="search">
+                @Html.Partial("_SearchBar")
+            </form>
+</div><!-- collapse -->
+        <form class="navbar-form hidden-sm hidden-md hidden-lg" action="/Product/Search" role="search">
+            @Html.Partial("_SearchBar")
+        </form>
+</nav><!-- /navbar -->
 
     <div class="container-fluid">
         @Html.Partial("_Spacer")
