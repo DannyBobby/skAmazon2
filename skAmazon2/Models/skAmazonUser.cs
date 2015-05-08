@@ -20,6 +20,7 @@ namespace skAmazon2.Models
             this.CustomerOrders = new HashSet<CustomerOrder>();
             this.PaymentMethods = new HashSet<PaymentMethod>();
             this.SavedItems = new HashSet<SavedItem>();
+            this.ProductComments = new HashSet<ProductComment>();
         }
     
         public int UserID { get; set; }
@@ -33,5 +34,6 @@ namespace skAmazon2.Models
         public virtual Permission Permission { get; set; }
         public virtual ICollection<SavedItem> SavedItems { get; set; }
         public virtual skAmazonUserPassword skAmazonUserPassword { get; set; }
+        public virtual ICollection<ProductComment> ProductComments { get; set; }
     }
 }

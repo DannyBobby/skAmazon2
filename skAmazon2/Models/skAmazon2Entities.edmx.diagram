@@ -32,6 +32,9 @@
         <AssociationConnector Association="skAmazonDataModel.FK_SavedItem_Product" ManuallyRouted="false" />
         <AssociationConnector Association="skAmazonDataModel.FK_SavedItem_skAmazonUser" ManuallyRouted="false" />
         <AssociationConnector Association="skAmazonDataModel.FK_skAmazonUserPassword_skAmazonUser" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="skAmazonDataModel.ProductComment" Width="1.5" PointX="12.5" PointY="8.75" />
+        <AssociationConnector Association="skAmazonDataModel.FK_ProductComment_Product" />
+        <AssociationConnector Association="skAmazonDataModel.FK_ProductComment_skAmazonUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

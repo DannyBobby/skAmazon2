@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="skAmazonDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="skAmazonDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -91,6 +91,17 @@
           <Property Name="Rating" Type="int" />
           <Property Name="ManufacturerID" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CommentText" Type="varchar(max)" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SavedItem">
           <Key>
@@ -257,6 +268,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductComment_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="ProductComment">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductComment_skAmazonUser">
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
+          <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ProductComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SavedItem_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="SavedItem" Type="Self.SavedItem" Multiplicity="*" />
@@ -314,6 +349,7 @@
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductComment" EntityType="Self.ProductComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SavedItem" EntityType="Self.SavedItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShippingOption" EntityType="Self.ShippingOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="skAmazonUser" EntityType="Self.skAmazonUser" Schema="dbo" store:Type="Tables" />
@@ -362,6 +398,14 @@
             <End Role="skAmazonUser" EntitySet="skAmazonUser" />
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductComment_Product" Association="Self.FK_ProductComment_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductComment" EntitySet="ProductComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductComment_skAmazonUser" Association="Self.FK_ProductComment_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
+            <End Role="ProductComment" EntitySet="ProductComment" />
+          </AssociationSet>
           <AssociationSet Name="FK_SavedItem_Product" Association="Self.FK_SavedItem_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="SavedItem" EntitySet="SavedItem" />
@@ -379,8 +423,7 @@
             <End Role="skAmazonUserPassword" EntitySet="skAmazonUserPassword" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="skAmazonDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -490,6 +533,7 @@
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Item_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="OrderLineItems" Relationship="Self.FK_OrderLineItem_Product" FromRole="Product" ToRole="OrderLineItem" />
           <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_Product" FromRole="Product" ToRole="SavedItem" />
+          <NavigationProperty Name="ProductComments" Relationship="skAmazonDataModel.FK_ProductComment_Product" FromRole="Product" ToRole="ProductComment" />
         </EntityType>
         <EntityType Name="SavedItem">
           <Key>
@@ -525,6 +569,7 @@
           <NavigationProperty Name="Permission" Relationship="Self.FK_skAmazonUser_Permission" FromRole="skAmazonUser" ToRole="Permission" />
           <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_skAmazonUser" FromRole="skAmazonUser" ToRole="SavedItem" />
           <NavigationProperty Name="skAmazonUserPassword" Relationship="Self.FK_skAmazonUserPassword_skAmazonUser" FromRole="skAmazonUser" ToRole="skAmazonUserPassword" />
+          <NavigationProperty Name="ProductComments" Relationship="skAmazonDataModel.FK_ProductComment_skAmazonUser" FromRole="skAmazonUser" ToRole="ProductComment" />
         </EntityType>
         <EntityType Name="skAmazonUserPassword">
           <Key>
@@ -787,7 +832,53 @@
             <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
             <End Role="skAmazonUserPassword" EntitySet="skAmazonUserPasswords" />
           </AssociationSet>
+          <EntitySet Name="ProductComments" EntityType="skAmazonDataModel.ProductComment" />
+          <AssociationSet Name="FK_ProductComment_Product" Association="skAmazonDataModel.FK_ProductComment_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductComment" EntitySet="ProductComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductComment_skAmazonUser" Association="skAmazonDataModel.FK_ProductComment_skAmazonUser">
+            <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
+            <End Role="ProductComment" EntitySet="ProductComments" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ProductComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CommentText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="skAmazonDataModel.FK_ProductComment_Product" FromRole="ProductComment" ToRole="Product" />
+          <NavigationProperty Name="skAmazonUser" Relationship="skAmazonDataModel.FK_ProductComment_skAmazonUser" FromRole="ProductComment" ToRole="skAmazonUser" />
+        </EntityType>
+        <Association Name="FK_ProductComment_Product">
+          <End Type="skAmazonDataModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="skAmazonDataModel.ProductComment" Role="ProductComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="ProductComment">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductComment_skAmazonUser">
+          <End Type="skAmazonDataModel.skAmazonUser" Role="skAmazonUser" Multiplicity="1" />
+          <End Type="skAmazonDataModel.ProductComment" Role="ProductComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skAmazonUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ProductComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -923,6 +1014,18 @@
               <MappingFragment StoreEntitySet="skAmazonUserPassword">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductComments">
+            <EntityTypeMapping TypeName="skAmazonDataModel.ProductComment">
+              <MappingFragment StoreEntitySet="ProductComment">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
