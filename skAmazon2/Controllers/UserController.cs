@@ -21,6 +21,19 @@ namespace skAmazon2.Controllers
             return View(skamazonusers.ToList());
         }
 
+        // viewcart direct
+        // totally jumbled right now
+        //public ActionResult ViewCart(List<SavedItem> items )
+        //{
+        //    var items = from c in SavedItem join p in Product on SavedItem.ProductId equals Product.ProductId where ProductId equals (var) select {FieldName = SavedItem.ProductDescription}
+        //    return View(items);
+        //}
+
+        // checkout method
+        public ActionResult Checkout()
+        {
+            return View();
+        }
         // GET: /User/Details/5
         public ActionResult Details(int? id)
         {
