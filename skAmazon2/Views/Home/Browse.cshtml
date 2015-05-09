@@ -33,101 +33,20 @@
 
 
     @*Using Flat UI's tiles here:*@
+@*col-md-9 col-md-push-3 col-lg-10 col-lg-push-2*@
     <div class="row">
-        <div class="main-content col-md-9 col-md-push-3 col-lg-10 col-lg-push-2">
+        <div class="main-content col-md-12">
             @Html.Partial("_MainContentTopBar")
             <div class="browse-item-wrapper row">
                 <div class="row">
-                    @*<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                            <div class="tile">
-                                <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
-                                <h3 class="tile-title">Item</h3>
-                                <p>This is an awesome product.</p>
-                                <a class="btn btn-primary btn-large btn-block">BUY ME!</a>
-                            </div>
-                        </div>*@
-
-                    @*use this*@
                     @* Populates a browse page with all the items matching the search*@
-                    @if (Model!=null)
+                    @if (Model != null)
                     {
                         foreach (var item in Model)
                         {
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
                                 <div class="tile">
-                                    <img src="../Content/icon_Widget2.jpg" alt="widget" class="">
+                                    <img src="../../Content/icon_Widget2.jpg" alt="widget" class="">
                                     <h3 class="tile-title">@Html.DisplayFor(modelItem => item.ProductDescription)</h3>
                                     <p>Price: @Html.DisplayFor(modelItem => item.UnitPrice)</p>
                                     <a href=@Url.Action("Details", "Product", new { id = item.ItemID }) class="btn btn-primary btn-large btn-block">View Item</a>
@@ -142,7 +61,8 @@
             </div>
         </div>
 
-        <div class="sidebar col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9 col-lg-2 col-lg-pull-10">
+        @* no list for now on the side *@
+        @*<div class="sidebar col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9 col-lg-2 col-lg-pull-10">
             <ul class="">
                 <li><a href="#">Link List</a></li>
                 <li><a href="#">Link List</a></li>
@@ -163,28 +83,5 @@
                     </ul>
                 </li>
             </ul>
-        </div>
-
-        @*<div class="sidebar col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9 col-lg-2 col-lg-pull-10">
-                <ul class="sidebar">
-                    <li><a href="#fui-button">Link List</a></li>
-                    <li><a href="#fui-button">Link List</a></li>
-                    <li><a href="#fui-button">Link List</a></li>
-                    <li>
-                        <ul class="sidebar">
-                            <li><a href="#fui-button">Link List</a></li>
-                            <li><a href="#fui-button">Link List</a></li>
-                            <li><a href="#fui-button">Link List</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#fui-button">Link List</a></li>
-                    <li>
-                        <ul class="sidebar">
-                            <li><a href="#fui-button">Link List</a></li>
-                            <li><a href="#fui-button">Link List</a></li>
-                            <li><a href="#fui-button">Link List</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>*@
+        </div>*@
     </div>

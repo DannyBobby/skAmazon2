@@ -72,6 +72,11 @@
     }
 }
 
+/* make the text colorful so you can see it */
+#searchBar {
+    color: #1abc9c;
+}
+
 /* delete the spacer below the navbar and make it dynamic */
 .navbar {
     margin-bottom: 0;
@@ -267,7 +272,7 @@ body {
 }
 
 .browse-item-wrapper {
-    text-align: center;
+    
 }
 
     .browse-item-wrapper div {
@@ -279,21 +284,6 @@ body {
 
     .browse-item-wrapper .item {
         background-color: white;
-    }
-
-    .browse-item-wrapper .items-sm {
-        width: 120px;
-        height: 120px;
-    }
-
-    .browse-item-wrapper .items-md {
-        width: 180px;
-        height: 180px;
-    }
-
-    .browse-item-wrapper .items-lg {
-        width: 240px;
-        height: 240px;
     }
 /*----------------------------------------------- */
 

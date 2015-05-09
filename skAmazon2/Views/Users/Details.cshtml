@@ -1,5 +1,4 @@
-﻿@model skAmazon2.Models.skAmazonUser
-
+﻿@model skAmazon2.Models.ApplicationUser
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,19 +11,19 @@
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Firstname)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Firstname)
+            @Html.DisplayFor(model => model.FirstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Lastname)
+            @Html.DisplayNameFor(model => model.LastName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Lastname)
+            @Html.DisplayFor(model => model.LastName)
         </dd>
 
         <dt>
@@ -36,16 +35,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.skAmazonUserPassword.Password)
+            @Html.DisplayNameFor(model => model.PasswordHash)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.skAmazonUserPassword.Password)
+            @Html.DisplayFor(model => model.PasswordHash)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
