@@ -27,9 +27,6 @@ namespace skAmazon2.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public int PermissionLevelID { get; set; }
-        public string PasswordHash { get; set; }
-        public string SecurityStamp { get; set; }
-        public string Discriminator { get; set; }
     
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }

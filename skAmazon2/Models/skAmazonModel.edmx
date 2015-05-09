@@ -146,9 +146,6 @@
           <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PermissionLevelID" Type="int" Nullable="false" />
-          <Property Name="PasswordHash" Type="varchar(max)" />
-          <Property Name="SecurityStamp" Type="varchar(max)" />
-          <Property Name="Discriminator" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="skAmazonUserPassword">
           <Key>
@@ -371,6 +368,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_skAmazonUser_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="skAmazonUser">
+              <PropertyRef Name="PermissionLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_skAmazonUserPassword_skAmazonUser">
           <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
           <End Role="skAmazonUserPassword" Type="Self.skAmazonUserPassword" Multiplicity="0..1" />
@@ -467,6 +476,10 @@
           <AssociationSet Name="FK_SavedItem_skAmazonUser" Association="Self.FK_SavedItem_skAmazonUser">
             <End Role="skAmazonUser" EntitySet="skAmazonUser" />
             <End Role="SavedItem" EntitySet="SavedItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skAmazonUser_Permission" Association="Self.FK_skAmazonUser_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
           </AssociationSet>
           <AssociationSet Name="FK_skAmazonUserPassword_skAmazonUser" Association="Self.FK_skAmazonUserPassword_skAmazonUser">
             <End Role="skAmazonUser" EntitySet="skAmazonUser" />
@@ -644,9 +657,6 @@
           <NavigationProperty Name="ProductComments" Relationship="Self.FK_ProductComment_skAmazonUser" FromRole="skAmazonUser" ToRole="ProductComment" />
           <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_skAmazonUser" FromRole="skAmazonUser" ToRole="SavedItem" />
           <NavigationProperty Name="skAmazonUserPassword" Relationship="Self.FK_skAmazonUserPassword_skAmazonUser" FromRole="skAmazonUser" ToRole="skAmazonUserPassword" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Discriminator" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="skAmazonUserPassword">
           <Key>
@@ -1143,9 +1153,6 @@
           <EntitySetMapping Name="skAmazonUsers">
             <EntityTypeMapping TypeName="skAmazon2Entities.skAmazonUser">
               <MappingFragment StoreEntitySet="skAmazonUser">
-                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Firstname" ColumnName="Firstname" />
                 <ScalarProperty Name="Lastname" ColumnName="Lastname" />
