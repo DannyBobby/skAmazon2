@@ -40,6 +40,7 @@
         <AssociationConnector Association="skAmazon2Entities.FK_skAmazonUserPassword_skAmazonUser" ManuallyRouted="false" />
         <EntityTypeShape EntityType="skAmazon2Entities.Cart" Width="1.5" PointX="4.625" PointY="1.25" />
         <AssociationConnector Association="skAmazon2Entities.FK_Cart_Product" />
+        <EntityTypeShape EntityType="skAmazon2Entities.ApplicationUser" Width="1.5" PointX="0.75" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
