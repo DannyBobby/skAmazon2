@@ -16,7 +16,7 @@ namespace skAmazon2.Models
     {
         public Permission()
         {
-            this.skAmazonUsers = new HashSet<skAmazonUser>();
+            this.ApplicationUsers = new HashSet<ApplicationUser>();
         }
     
         public int PermissionID { get; set; }
@@ -24,6 +24,6 @@ namespace skAmazon2.Models
         public Nullable<bool> IsRegisteredCustomer { get; set; }
         public Nullable<bool> IsEmployee { get; set; }
     
-        public virtual ICollection<skAmazonUser> skAmazonUsers { get; set; }
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

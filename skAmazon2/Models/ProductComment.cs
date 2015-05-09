@@ -16,12 +16,11 @@ namespace skAmazon2.Models
     {
         public int CommentId { get; set; }
         public int ItemId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string CommentText { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public int Rating { get; set; }
     
-        public virtual Product Product { get; set; }
-        public virtual skAmazonUser skAmazonUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

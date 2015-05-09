@@ -166,7 +166,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,12 +228,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>skAmazonModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\skAmazonUser.cs">
-      <DependentUpon>skAmazonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\skAmazonUserPassword.cs">
-      <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>skAmazonModel.tt</DependentUpon>

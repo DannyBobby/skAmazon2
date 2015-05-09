@@ -27,9 +27,9 @@ namespace skAmazon2.Models
         public string ZIP { get; set; }
         public string Country { get; set; }
         public System.DateTime DateCreated { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     
-        public virtual skAmazonUser skAmazonUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<PaymentMethod> PaymentMethods { get; set; }
     }
 }

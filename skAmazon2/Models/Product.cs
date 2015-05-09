@@ -16,11 +16,9 @@ namespace skAmazon2.Models
     {
         public Product()
         {
-            this.OrderLineItems = new HashSet<OrderLineItem>();
-            this.ProductComments = new HashSet<ProductComment>();
-            this.ProductImages = new HashSet<ProductImage>();
-            this.SavedItems = new HashSet<SavedItem>();
             this.Carts = new HashSet<Cart>();
+            this.OrderLineItems = new HashSet<OrderLineItem>();
+            this.ProductImages = new HashSet<ProductImage>();
         }
     
         public int ItemID { get; set; }
@@ -31,12 +29,10 @@ namespace skAmazon2.Models
         public int ManufacturerID { get; set; }
         public int CategoryID { get; set; }
     
+        public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
-        public virtual ICollection<ProductComment> ProductComments { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
-        public virtual ICollection<SavedItem> SavedItems { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

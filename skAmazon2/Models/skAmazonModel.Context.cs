@@ -25,6 +25,8 @@ namespace skAmazon2.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
@@ -37,10 +39,6 @@ namespace skAmazon2.Models
         public virtual DbSet<ProductImage> ProductImages { get; set; }
         public virtual DbSet<SavedItem> SavedItems { get; set; }
         public virtual DbSet<ShippingOption> ShippingOptions { get; set; }
-        public virtual DbSet<skAmazonUser> skAmazonUsers { get; set; }
-        public virtual DbSet<skAmazonUserPassword> skAmazonUserPasswords { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

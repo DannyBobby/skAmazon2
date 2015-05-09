@@ -24,10 +24,10 @@ namespace skAmazon2.Models
         public System.DateTime DateCreated { get; set; }
         public string PaymentType { get; set; }
         public int BillingAddressID { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
-        public virtual skAmazonUser skAmazonUser { get; set; }
     }
 }

@@ -15,11 +15,10 @@ namespace skAmazon2.Models
     public partial class SavedItem
     {
         public int SavedItemId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int ProductID { get; set; }
         public string ListName { get; set; }
     
-        public virtual Product Product { get; set; }
-        public virtual skAmazonUser skAmazonUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

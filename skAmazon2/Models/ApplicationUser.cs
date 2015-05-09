@@ -7,19 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Microsoft.AspNet.Identity.EntityFramework;
-
 namespace skAmazon2.Models
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     
     public partial class ApplicationUser : IdentityUser
     {
+        public ApplicationUser()
+        {
+            this.CustomerAddresses = new HashSet<CustomerAddress>();
+            this.CustomerOrders = new HashSet<CustomerOrder>();
+            this.PaymentMethods = new HashSet<PaymentMethod>();
+            this.ProductComments = new HashSet<ProductComment>();
+            this.SavedItems = new HashSet<SavedItem>();
+        }
+    
         public override string Id { get; set; }
         public override string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public override string PasswordHash { get; set; }
         public override string SecurityStamp { get; set; }
-        public string Discriminator { get; set; }
+        public Nullable<int> PermissionLevelID { get; set; }
+    
+        public virtual Permission Permission { get; set; }
+        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
+        public virtual ICollection<PaymentMethod> PaymentMethods { get; set; }
+        public virtual ICollection<ProductComment> ProductComments { get; set; }
+        public virtual ICollection<SavedItem> SavedItems { get; set; }
     }
 }
