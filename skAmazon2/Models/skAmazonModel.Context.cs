@@ -40,5 +40,6 @@ namespace skAmazon2.Models
         public virtual DbSet<skAmazonUser> skAmazonUsers { get; set; }
         public virtual DbSet<skAmazonUserPassword> skAmazonUserPasswords { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
     }
 }

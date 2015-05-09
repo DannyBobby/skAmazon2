@@ -20,6 +20,7 @@ namespace skAmazon2.Models
             this.ProductComments = new HashSet<ProductComment>();
             this.ProductImages = new HashSet<ProductImage>();
             this.SavedItems = new HashSet<SavedItem>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int ItemID { get; set; }
@@ -36,5 +37,6 @@ namespace skAmazon2.Models
         public virtual ICollection<ProductComment> ProductComments { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
         public virtual ICollection<SavedItem> SavedItems { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

@@ -311,7 +311,7 @@ namespace skAmazon2.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && UserManager != null)
+                if (disposing && UserManager != null)
             {
                 UserManager.Dispose();
                 UserManager = null;

@@ -78,7 +78,11 @@
                 <dd>
                     @Html.DisplayFor(model => model.Category.CategoryDescription)
                 </dd>
-            </dl>            
+            </dl>  
+            
+            <p class="button">@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ItemID }, "")
+            </p>
+                      
         </div>
     </div>
     @Html.Partial("_Spacer")

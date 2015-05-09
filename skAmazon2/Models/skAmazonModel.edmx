@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="skAmazon2Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="skAmazon2Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartID" Type="varchar(max)" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -136,6 +146,9 @@
           <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PermissionLevelID" Type="int" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar(max)" />
+          <Property Name="SecurityStamp" Type="varchar(max)" />
+          <Property Name="Discriminator" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="skAmazonUserPassword">
           <Key>
@@ -163,6 +176,18 @@
             </Principal>
             <Dependent Role="CustomerAddress">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ItemID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -346,18 +371,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_skAmazonUser_Permission">
-          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
-          <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Permission">
-              <PropertyRef Name="PermissionID" />
-            </Principal>
-            <Dependent Role="skAmazonUser">
-              <PropertyRef Name="PermissionLevelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_skAmazonUserPassword_skAmazonUser">
           <End Role="skAmazonUser" Type="Self.skAmazonUser" Multiplicity="1" />
           <End Role="skAmazonUserPassword" Type="Self.skAmazonUserPassword" Multiplicity="0..1" />
@@ -371,6 +384,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="skAmazon2EntitiesStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerOrder" EntityType="Self.CustomerOrder" Schema="dbo" store:Type="Tables" />
@@ -389,6 +403,10 @@
           <AssociationSet Name="FK_Address_skAmazonUser" Association="Self.FK_Address_skAmazonUser">
             <End Role="skAmazonUser" EntitySet="skAmazonUser" />
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
           <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
             <End Role="Category" EntitySet="Category" />
@@ -450,17 +468,12 @@
             <End Role="skAmazonUser" EntitySet="skAmazonUser" />
             <End Role="SavedItem" EntitySet="SavedItem" />
           </AssociationSet>
-          <AssociationSet Name="FK_skAmazonUser_Permission" Association="Self.FK_skAmazonUser_Permission">
-            <End Role="Permission" EntitySet="Permission" />
-            <End Role="skAmazonUser" EntitySet="skAmazonUser" />
-          </AssociationSet>
           <AssociationSet Name="FK_skAmazonUserPassword_skAmazonUser" Association="Self.FK_skAmazonUserPassword_skAmazonUser">
             <End Role="skAmazonUser" EntitySet="skAmazonUser" />
             <End Role="skAmazonUserPassword" EntitySet="skAmazonUserPassword" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="skAmazon2Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -572,6 +585,7 @@
           <NavigationProperty Name="ProductComments" Relationship="Self.FK_ProductComment_Product" FromRole="Product" ToRole="ProductComment" />
           <NavigationProperty Name="ProductImages" Relationship="Self.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
           <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_Product" FromRole="Product" ToRole="SavedItem" />
+          <NavigationProperty Name="Carts" Relationship="skAmazon2Entities.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
         </EntityType>
         <EntityType Name="ProductComment">
           <Key>
@@ -630,6 +644,9 @@
           <NavigationProperty Name="ProductComments" Relationship="Self.FK_ProductComment_skAmazonUser" FromRole="skAmazonUser" ToRole="ProductComment" />
           <NavigationProperty Name="SavedItems" Relationship="Self.FK_SavedItem_skAmazonUser" FromRole="skAmazonUser" ToRole="SavedItem" />
           <NavigationProperty Name="skAmazonUserPassword" Relationship="Self.FK_skAmazonUserPassword_skAmazonUser" FromRole="skAmazonUser" ToRole="skAmazonUserPassword" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Discriminator" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="skAmazonUserPassword">
           <Key>
@@ -953,7 +970,35 @@
             <End Role="skAmazonUser" EntitySet="skAmazonUsers" />
             <End Role="skAmazonUserPassword" EntitySet="skAmazonUserPasswords" />
           </AssociationSet>
+          <EntitySet Name="Carts" EntityType="skAmazon2Entities.Cart" />
+          <AssociationSet Name="FK_Cart_Product" Association="skAmazon2Entities.FK_Cart_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="skAmazon2Entities.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Cart_Product">
+          <End Type="skAmazon2Entities.Product" Role="Product" Multiplicity="1" />
+          <End Type="skAmazon2Entities.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1098,6 +1143,9 @@
           <EntitySetMapping Name="skAmazonUsers">
             <EntityTypeMapping TypeName="skAmazon2Entities.skAmazonUser">
               <MappingFragment StoreEntitySet="skAmazonUser">
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Firstname" ColumnName="Firstname" />
                 <ScalarProperty Name="Lastname" ColumnName="Lastname" />
@@ -1121,6 +1169,17 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="skAmazon2Entities.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
