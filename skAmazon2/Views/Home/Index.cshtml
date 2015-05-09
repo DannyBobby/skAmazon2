@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "sellstuffto.me";
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.LoggedIn = false;
+}
+<h2>Sell Stuff To Me</h2>
+<p>
+    Oh, hey! This is our site. It's pretty slick. We've made a bunch of the views, and we went ahead and added a (temporary) controller just so we can navigate through them
+    graphically instead of with text (or manually opening .html files, ew).
+</p>
+<p>
+    Above, you'll notice our totally responsive <strong>navigation bar</strong>. Go ahead, resize the window. It's pretty!<br />
+    On the right side of the navbar, you can see our <strong>user navigation</strong>. Right now, it is showing our log in form. On all the other pages, it shows the cart and the
+    user options - that's because we made a (temporary) piece of logic that shows the login form on this page, and the user navigation buttons on the other pages. Don't shoot us! This
+    tiny piece of logic is just because we wanted to get a head start on testing the real-world applications of our views.
+</p>
+<p>
+    Logging in - which can be done from the button above - pops up a modal if you're on a big device, and takes you to the login page if you're not.
+</p>
+<h4>@Html.ActionLink("home page", "Home")</h4>
+<p>
+    The real home page is pretty cool. It's got a big carousel right on the front, and a list of featured items below.
+</p>
+<h4>@Html.ActionLink("browse", "Browse")</h4>
+<p>
+    The <strong>browse</strong> page shows a list of filters on the right side, and then a <strong>list/index of products</strong> on the right side.
+    There's a little breadcrumbs bar, and a set of inline buttons for resizing the images. The resizer has a backbone, but it hasn't been hooked up to jQuery just yet.
+    Since the search bar acts as a text filter for this page, this is also the <strong>index of searches</strong> view.
+</p>
+<h4>@Html.ActionLink("product", "Product")</h4>
+<p>
+    The <strong>product</strong> view shows a cool image carousel with pictures of the items, and has a tabbed area underneath for both
+    an <strong>index/list of comments</strong> and an <strong>index/list of product details</strong>.
+</p>
+<h4>@Html.ActionLink("login", "Login", "Account")</h4>
+<p>
+    This <strong>login</strong> view will be used in the event the user is using a small screen.
+</p>
+<h4>@Html.ActionLink("shopping cart", "ViewCart", "Account")</h4>
+<p>
+    The <strong>shopping cart</strong> shows the shopper what they have placed in their cart while also providing a way for them to edit the contents of their cart as well.
+</p>
+
+
+
