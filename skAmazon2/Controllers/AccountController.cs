@@ -44,11 +44,15 @@ namespace skAmazon2.Controllers
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
-            {
+            {                
+
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    
+                    MigrateShoppingCart(model.UserName);
+
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -83,6 +87,9 @@ namespace skAmazon2.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
+
+                    MigrateShoppingCart(model.UserName);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -317,6 +324,15 @@ namespace skAmazon2.Controllers
                 UserManager = null;
             }
             base.Dispose(disposing);
+        }
+
+        private void MigrateShoppingCart(string UserName)
+        {
+            // Associate shopping cart items with logged-in user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            cart.MigrateCart(UserName);
+            Session[ShoppingCart.CartSessionKey] = UserName;
         }
 
         #region Helpers

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4517aec137bb4c73ada767cecde2db78" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="4517aec137bb4c73ada767cecde2db78" Name="Diagram1" ZoomLevel="98">
         <EntityTypeShape EntityType="skAmazon2Entities.ApplicationUser" Width="1.5" PointX="3" PointY="5.375" />
         <EntityTypeShape EntityType="skAmazon2Entities.Cart" Width="1.5" PointX="12" PointY="3.375" />
         <EntityTypeShape EntityType="skAmazon2Entities.Category" Width="1.5" PointX="7.5" PointY="3.375" />
