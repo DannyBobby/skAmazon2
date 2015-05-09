@@ -1,7 +1,35 @@
-﻿@{
-    ViewBag.Title = "Order";
+﻿@model skAmazon2.ViewModels.ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "Review Your Cart";
     Layout = "../Shared/_Layout.cshtml";
 }
+
+<script type="text/javascript">
+    $(function () {
+        // Document.ready -> link up remove event handler
+        $(".RemoveLink").click(function () {
+            // Get the id from the link
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != '') {
+                // Perform the ajax post
+                $.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        } else {
+                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        }
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+    });
+</script>
 
 <div class="container">
     <div class="row">
@@ -16,46 +44,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach (var item in Model.CartItems)
+                    {
+                    <tr id="row-@item.RecordID">
                         <td class="col-sm-8 col-md-6">
                             <div class="media">
                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">Product name</a></h4>
-                                    <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
+                                    <h4 class="media-heading"><a href="#">@Html.ActionLink(item.Product.ProductDescription, "Details", "Product", new { id = item.ItemID }, null)</a></h4>
+                                    <h5 class="media-heading"> by <a href="#">Brand Here</a></h5>
                                     <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                    <a href="#" class="RemoveLink" data-id="@item.RecordID">Remove Item</a>
                                 </div>
                             </div>
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                            3
+                            @item.Quantity
                         </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@item.Product.UnitPrice</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@(item.Product.UnitPrice * item.Quantity)</strong></td>
                     </tr>
-                    <tr>
-                        <td class="col-md-6">
-                            <div class="media">
-                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">Product name</a></h4>
-                                    <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-                                    <span>Status: </span><span class="text-warning"><strong>Leaves warehouse in 2 - 3 weeks</strong></span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">
-                            2
-                        </td>
-                        <td class="col-md-1 text-center"><strong>$4.99</strong></td>
-                        <td class="col-md-1 text-center"><strong>$9.98</strong></td>
-                    </tr>
+                    }
+
                     <tr>
                         <td> </td>
                         <td> </td>
                         <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                        <td class="text-right"><h5><strong>@Model.CartTotal</strong></h5></td>
                     </tr>
+                    
                 @*<tr>
                     <td> </td>
                 </tr>*@

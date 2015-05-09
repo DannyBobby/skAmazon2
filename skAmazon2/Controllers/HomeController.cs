@@ -1,4 +1,5 @@
 ﻿using skAmazon2.Models;
+using skAmazon2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,20 @@ namespace skAmazon2.Controllers
         {
             return View();
         }   
+
+        public ActionResult Order()
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            // Set up our ViewModel
+            var viewModel = new ShoppingCartViewModel
+            {
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
+            };
+            // Return the view
+            return View(viewModel);
+        }
 
         public ActionResult Browse(List<Product> items)
         {
