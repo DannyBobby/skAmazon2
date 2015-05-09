@@ -1,39 +1,15 @@
-﻿@*@*attempting to keep the searched term in the search box using ajax*@
-@*<script type="text/javascript">
-        $(document).ready(function()) {
-        $("#search").click(function ()) {
-        alert("button clicked");
-            $.ajax({
-                url: "Product/Index",
-                type: "POST",
-                data: {criteria: "search"},
-                contentType: "applicatin/json",
-                success: function (response) {
-                    alert("Success");
-                },
-                error: function () { alert("error");}
-            });
-        });
-        });
-        function getSearch() {
-            var search = "/Product?search=" + $("#searchBar").val();
-            $.get(search, function(data) {
-                $("searchBar").html(data);
-            });
-        }
-    </script>*@
-@*$.ajax({
-    url: 'Product/Index',
-    type: "POST",
-    data: {criteria: 'search'},
-    contentType: "applicatin/json",
-    success: function
-    })*@
+﻿@{
+    var searchText = "";
+    if (!String.IsNullOrEmpty(Request.QueryString["searchTerm"]))
+    {
+        searchText = Request.QueryString["searchTerm"];
+    }
+}
 
 <form class="navbar-form hidden-xs" action="/Product/Search" role="search">
     <div class="form-group-fw form-group">
         <div class="input-group-fw input-group input-group-rounded">
-            <input id="searchBar" class="form-control" type="search" name="searchTerm" placeholder="search">
+            <input id="searchBar" class="form-control" type="search" name="searchTerm" placeholder="search" value="@searchText">
             <span class="input-group-btn-fw input-group-btn">
                 <button id="search" type="submit" class="btn"><span class="fui-search"></span></button>
             </span>
