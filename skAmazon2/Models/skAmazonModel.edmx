@@ -93,6 +93,9 @@
           <Property Name="PaymentType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BillingAddressID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="SecurityCode" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
@@ -640,6 +643,9 @@
           <NavigationProperty Name="ApplicationUser" Relationship="skAmazon2Entities.FK_PaymentMethod_ApplicationUser" FromRole="PaymentMethod" ToRole="ApplicationUser" />
           <NavigationProperty Name="CustomerAddress" Relationship="skAmazon2Entities.FK_PaymentMethod_Address" FromRole="PaymentMethod" ToRole="CustomerAddress" />
           <NavigationProperty Name="CustomerOrders" Relationship="skAmazon2Entities.FK_Order_PaymentMethod" FromRole="PaymentMethod" ToRole="CustomerOrder" />
+          <Property Name="CardNumber" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="SecurityCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
@@ -1017,6 +1023,9 @@
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="skAmazon2Entities.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="BillingAddressID" ColumnName="BillingAddressID" />
                 <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace skAmazon2.Models
@@ -92,14 +93,34 @@ namespace skAmazon2.Models
         public string ZIP { get; set; }
 
         [Required(ErrorMessage = "Country is required")]
+        [DisplayName("Country")]
         [StringLength(40)]
         public string Country { get; set; }
 
         [ScaffoldColumn(false)]
         public System.DateTime AddressDateCreated { get; set; }
 
+        [Required(ErrorMessage = "Payment Method Description is Required")]
+        [DisplayName("Payment Method Description")]
+        [StringLength(40)]
         public string PaymentDescription { get; set; }
+
+        [Required(ErrorMessage = "Card Number is Required")]
+        [StringLength(20)]
+        public Nullable<int> CardNumber { get; set; }
+
+        [Required(ErrorMessage = "Expiration Date is Required")]
+        [DataType(DataType.Date)]
+        public Nullable<System.DateTime> ExpirationDate { get; set; }
+
+        [Required(ErrorMessage = "Security Code is Required")]
+        [StringLength(10)]
+        public Nullable<int> SecurityCode { get; set; }
+
+        [ScaffoldColumn(false)]
         public System.DateTime PaymentDateCreated { get; set; }
+
+        [Required(ErrorMessage = "Payment Type (VISA, MasterCard, etc.) is required")]
         public string PaymentType { get; set; }
 
 

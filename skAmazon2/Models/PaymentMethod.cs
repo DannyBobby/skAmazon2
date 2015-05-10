@@ -25,6 +25,9 @@ namespace skAmazon2.Models
         public string PaymentType { get; set; }
         public int BillingAddressID { get; set; }
         public string UserID { get; set; }
+        public string CardNumber { get; set; }
+        public Nullable<System.DateTime> ExpirationDate { get; set; }
+        public string SecurityCode { get; set; }
     
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
