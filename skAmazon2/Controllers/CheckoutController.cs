@@ -45,9 +45,9 @@ namespace skAmazon2.Controllers
                                          select o).ToList();
 
             // Get the user's Shopping Cart info
-            //var cart = ShoppingCart.GetCart(this.HttpContext);
-            //viewModel.Cart.CartItems = cart.GetCartItems();
-            //viewModel.Cart.CartTotal = cart.GetTotal();            
+            var cart = ShoppingCart.GetCart(this.HttpContext);               
+            //var cartItems = cart.GetCartItems();            
+            viewModel.CartTotal = cart.GetTotal();            
 
             return View(viewModel);
         }

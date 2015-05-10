@@ -11,7 +11,9 @@ namespace skAmazon2.Models
     {
         public ApplicationUser User { get; set; }
 
-        public ShoppingCartViewModel Cart { get; set; }
+        public List<Cart> CartItems { get; set; }
+
+        public decimal CartTotal { get; set; }
 
         public int SelectedPaymentMethod { get; set; }
 
