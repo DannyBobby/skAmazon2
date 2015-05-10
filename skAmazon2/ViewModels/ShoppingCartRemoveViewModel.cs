@@ -5,6 +5,8 @@ using System.Web;
 
 namespace skAmazon2.ViewModels
 {
+
+    // allows you to remove items from the cart, and updates the view
     public class ShoppingCartRemoveViewModel
     {
         public string Message { get; set; }

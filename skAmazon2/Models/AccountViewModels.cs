@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace skAmazon2.Models
 {
+    // grabs the persons username from whatever external source they used to login
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -11,6 +12,8 @@ namespace skAmazon2.Models
         public string UserName { get; set; }
     }
 
+
+    // allows the user to Change their password
     public class ManageUserViewModel
     {
         [Required]
@@ -30,6 +33,7 @@ namespace skAmazon2.Models
         public string ConfirmPassword { get; set; }
     }
 
+    // requests information specific for authentication
     public class LoginViewModel
     {
         [Required]
@@ -45,6 +49,7 @@ namespace skAmazon2.Models
         public bool RememberMe { get; set; }
     }
 
+    // binds together a few different models to create a new ApplicationUser with a "default" address and payment method
     public class RegisterViewModel
     {
         [Required]
