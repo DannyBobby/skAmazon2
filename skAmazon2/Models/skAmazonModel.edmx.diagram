@@ -11,14 +11,12 @@
         <EntityTypeShape EntityType="skAmazon2Entities.CustomerAddress" Width="1.5" PointX="5.25" PointY="8.5" />
         <EntityTypeShape EntityType="skAmazon2Entities.CustomerOrder" Width="1.5" PointX="9.75" PointY="6.5" />
         <EntityTypeShape EntityType="skAmazon2Entities.Manufacturer" Width="1.5" PointX="7.5" PointY="11.25" />
-        <EntityTypeShape EntityType="skAmazon2Entities.OrderLineItem" Width="1.5" PointX="12" PointY="6.375" />
         <EntityTypeShape EntityType="skAmazon2Entities.PaymentMethod" Width="1.5" PointX="7.5" PointY="7.125" />
         <EntityTypeShape EntityType="skAmazon2Entities.Permission" Width="1.5" PointX="0.75" PointY="6.25" />
         <EntityTypeShape EntityType="skAmazon2Entities.Product" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="skAmazon2Entities.ProductComment" Width="1.5" PointX="5.25" PointY="2.75" />
         <EntityTypeShape EntityType="skAmazon2Entities.ProductImage" Width="1.5" PointX="12" PointY="10.25" />
         <EntityTypeShape EntityType="skAmazon2Entities.SavedItem" Width="1.5" PointX="5.25" PointY="5.875" />
-        <EntityTypeShape EntityType="skAmazon2Entities.ShippingOption" Width="1.5" PointX="9.75" PointY="10.125" />
         <EntityTypeShape EntityType="skAmazon2Entities.sysdiagram" Width="1.5" PointX="0.75" PointY="2.125" />
         <AssociationConnector Association="skAmazon2Entities.FK_ApplicationUser_Permission" />
         <AssociationConnector Association="skAmazon2Entities.FK_CustomerAddress_ApplicationUser" />
@@ -31,11 +29,20 @@
         <AssociationConnector Association="skAmazon2Entities.FK_Item_Category" />
         <AssociationConnector Association="skAmazon2Entities.FK_PaymentMethod_Address" />
         <AssociationConnector Association="skAmazon2Entities.FK_Order_PaymentMethod" />
-        <AssociationConnector Association="skAmazon2Entities.FK_OrderLineItem_Order" />
         <AssociationConnector Association="skAmazon2Entities.FK_Item_Manufacturer" />
-        <AssociationConnector Association="skAmazon2Entities.FK_OrderLineItem_Product" />
-        <AssociationConnector Association="skAmazon2Entities.FK_OrderLineItem_ShippingOption" />
         <AssociationConnector Association="skAmazon2Entities.FK_ProductImage_Product" />
+        <AssociationConnector Association="skAmazon2Entities.FK_CustomerOrder_CustomerAddress" />
+        <EntityTypeShape EntityType="skAmazon2Entities.OrderLineItem" Width="1.5" PointX="13.25" PointY="7.125" />
+        <EntityTypeShape EntityType="skAmazon2Entities.ShippingOption" Width="1.5" PointX="10" PointY="10.75" />
+        <AssociationConnector Association="skAmazon2Entities.FK_CustomerOrder_ShippingOption" />
+        <AssociationConnector Association="skAmazon2Entities.FK_OrderLineItem_Order" />
+        <AssociationConnector Association="skAmazon2Entities.FK_OrderLineItem_Product" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.25" PointY="2.03125" />
+          <ConnectorPoint PointX="14.068115779250622" PointY="2.03125" />
+          <ConnectorPoint PointX="14.068115779250622" PointY="6.570290625" />
+          <ConnectorPoint PointX="13.673451396374396" PointY="6.570290625" />
+          <ConnectorPoint PointX="13.673451396374396" PointY="7.125" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

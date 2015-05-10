@@ -17,6 +17,7 @@ namespace skAmazon2.Models
         public CustomerAddress()
         {
             this.PaymentMethods = new HashSet<PaymentMethod>();
+            this.CustomerOrders = new HashSet<CustomerOrder>();
         }
     
         public int AddressID { get; set; }
@@ -31,5 +32,6 @@ namespace skAmazon2.Models
     
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<PaymentMethod> PaymentMethods { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
     }
 }

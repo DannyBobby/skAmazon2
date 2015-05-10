@@ -18,10 +18,8 @@ namespace skAmazon2.Models
         public int OrderId { get; set; }
         public int ItemID { get; set; }
         public int Quantity { get; set; }
-        public int ShippingOptionID { get; set; }
     
         public virtual CustomerOrder CustomerOrder { get; set; }
         public virtual Product Product { get; set; }
-        public virtual ShippingOption ShippingOption { get; set; }
     }
 }

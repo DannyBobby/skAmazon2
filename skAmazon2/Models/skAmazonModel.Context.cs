@@ -31,14 +31,14 @@ namespace skAmazon2.Models
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
-        public virtual DbSet<OrderLineItem> OrderLineItems { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductComment> ProductComments { get; set; }
         public virtual DbSet<ProductImage> ProductImages { get; set; }
         public virtual DbSet<SavedItem> SavedItems { get; set; }
-        public virtual DbSet<ShippingOption> ShippingOptions { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<OrderLineItem> OrderLineItems { get; set; }
+        public virtual DbSet<ShippingOption> ShippingOptions { get; set; }
     }
 }

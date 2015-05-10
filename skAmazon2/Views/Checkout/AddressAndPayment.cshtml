@@ -1,0 +1,85 @@
+﻿@model skAmazon2.Models.CheckOutViewModel
+
+@{
+    ViewBag.Title = "Super-Fast Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"
+        type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    <h2>Super-Fast Checkout!</h2>
+    <h3>Ready to checkout @Model.User.FirstName @Model.User.LastName?</h3>
+   <fieldset>       
+       <legend>Shipping Destination</legend>      
+       <p>Please select your shipping method:</p>        
+       <select>
+           @foreach(var destination in Model.ShippingAddresses)
+           {
+               <option value="@destination.AddressID">@destination.AddrLine1</option>
+           }           
+       </select>
+       
+       <div>
+           <a type="button" class="btn btn-success" style="margin-top: .5em" href=#>
+               Add New Shipping Address >>
+           </a>
+       </div>
+
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>Payment Method</legend>
+        <p>Please select your payment method:</p>
+        <select>
+            @foreach (var payment in Model.PaymentMethods)
+            {
+                <option value="@payment.PaymentMethodID">@payment.PaymentDescription</option>
+            }
+        </select>
+        
+        <div>
+            <a type="button" class="btn btn-success" style="margin-top: .5em" href=#>
+                Add New Payment Method >>
+            </a>
+        </div>
+
+        <br />
+    </fieldset>
+    <fieldset>
+        <legend>Shipping Method</legend>
+        <p>Please select your shipping method:</p>
+        <select>
+            @foreach (var option in Model.ShippingOptions)
+            {
+                <option value="@option.ShippingOptionId">@option.Description</option>
+            }
+        </select>
+        <br />
+    </fieldset>
+    
+    <fieldset>
+        <legend>Promotion Code</legend>        
+        <div class="editor-label">
+            @Html.Label("Enter Code:")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("PromoCode")
+        </div>
+    </fieldset>
+    
+    <input type="submit" value="Submit Order" />
+}
+<br />
+<div>
+    @Html.ActionLink("Back to Cart", "Index", "ShoppingCart")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

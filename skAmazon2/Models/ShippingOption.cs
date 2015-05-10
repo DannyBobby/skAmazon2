@@ -16,13 +16,13 @@ namespace skAmazon2.Models
     {
         public ShippingOption()
         {
-            this.OrderLineItems = new HashSet<OrderLineItem>();
+            this.CustomerOrders = new HashSet<CustomerOrder>();
         }
     
         public int ShippingOptionId { get; set; }
         public string Description { get; set; }
         public decimal ShippingPrice { get; set; }
     
-        public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
     }
 }

@@ -21,11 +21,15 @@ namespace skAmazon2.Models
     
         public int OrderId { get; set; }
         public string UserID { get; set; }
-        public string DeliveryAddressID { get; set; }
+        public int DeliveryAddressID { get; set; }
         public int PaymentMethodID { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public int ShippingOptionID { get; set; }
     
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
+        public virtual CustomerAddress CustomerAddress { get; set; }
+        public virtual ShippingOption ShippingOption { get; set; }
         public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
     }
 }

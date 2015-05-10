@@ -11,15 +11,14 @@ namespace skAmazon2.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Product
     {
         public Product()
         {
             this.Carts = new HashSet<Cart>();
-            this.OrderLineItems = new HashSet<OrderLineItem>();
             this.ProductImages = new HashSet<ProductImage>();
+            this.OrderLineItems = new HashSet<OrderLineItem>();
         }
     
         public int ItemID { get; set; }
@@ -33,7 +32,7 @@ namespace skAmazon2.Models
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
-        public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
+        public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
     }
 }

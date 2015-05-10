@@ -122,9 +122,9 @@ namespace skAmazon2.Models
             {
                 var orderLineItem = new OrderLineItem
                 {
-                    ItemID = item.ItemID,
-                    OrderId = order.OrderId,                    
-                    Quantity = item.Quantity
+                    OrderId = order.OrderId, 
+                    ItemID = item.ItemID,                                       
+                    Quantity = item.Quantity                    
                 };
 
                 storeDB.OrderLineItems.Add(orderLineItem);
