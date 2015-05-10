@@ -180,6 +180,7 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\CustomerAddress.cs">
       <DependentUpon>skAmazonModel.tt</DependentUpon>
     </Compile>
@@ -626,6 +627,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\ShoppingCart\_CartTable.cshtml" />
+    <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
