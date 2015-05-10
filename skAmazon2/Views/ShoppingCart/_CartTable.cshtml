@@ -3,14 +3,21 @@
     <div class="col-sm-12 col-md-10 col-md-offset-1">
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th class="text-center">Price</th>
-                    <th class="text-center">Total</th>
-                </tr>
+            
+            @* Header row for the Order View*@
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Total</th>
+            </tr>
             </thead>
+
             <tbody>
+            @* Fills in the rest of the table with all the items that have been selected for the cart
+                    The following <tr> will display the carts subtotal, shipping info, billing info, payment method, and total price of cart
+                    The blank <td> space the row out with blank areas to fill in the table where we dont need information *@
+
                 @foreach (var item in Model.CartItems)
                 {
                     <tr id="row-@item.RecordID">
@@ -53,7 +60,7 @@
                     <td> </td>
                     <td> </td>
                     <td>
-                        <a type="button" class="btn btn-success" href=@Url.Action("AddressAndPayment","Checkout")>
+                        <a type="button" class="btn btn-success" href=@Url.Action("AddressAndPayment", "Checkout")>
                             Checkout >>
                         </a>
                     </td>
@@ -62,4 +69,3 @@
         </table>
     </div>
 </div>
-
