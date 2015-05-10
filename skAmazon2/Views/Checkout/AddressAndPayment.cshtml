@@ -17,13 +17,9 @@
     <h3>Ready to checkout @Model.User.FirstName @Model.User.LastName?</h3>
    <fieldset>       
        <legend>Shipping Destination</legend>      
-       <p>Please select your shipping method:</p>        
-       <select>
-           @foreach(var destination in Model.ShippingAddresses)
-           {
-               <option value="@destination.AddressID">@destination.AddrLine1</option>
-           }           
-       </select>
+       <p>Please select your shipping destination:</p>        
+       
+        @Html.DropDownList("Select Destination", new SelectList(Model.ShippingAddresses, "AddressID", "AddrLine1")) 
        
        <div>
            <a type="button" class="btn btn-success" style="margin-top: .5em" href=#>
@@ -36,13 +32,9 @@
     <fieldset>
         <legend>Payment Method</legend>
         <p>Please select your payment method:</p>
-        <select>
-            @foreach (var payment in Model.PaymentMethods)
-            {
-                <option value="@payment.PaymentMethodID">@payment.PaymentDescription</option>
-            }
-        </select>
         
+        @Html.DropDownList("Select Payment Method", new SelectList(Model.PaymentMethods, "PaymentMethodID", "PaymentDescription"))        
+             
         <div>
             <a type="button" class="btn btn-success" style="margin-top: .5em" href=#>
                 Add New Payment Method >>
@@ -54,12 +46,10 @@
     <fieldset>
         <legend>Shipping Method</legend>
         <p>Please select your shipping method:</p>
-        <select>
-            @foreach (var option in Model.ShippingOptions)
-            {
-                <option value="@option.ShippingOptionId">@option.Description</option>
-            }
-        </select>
+        
+        @Html.DropDownList("Select Shipping Method", new SelectList(Model.ShippingOptions, "ShippingOptionId", "Description"))
+
+        
         <br />
     </fieldset>
     

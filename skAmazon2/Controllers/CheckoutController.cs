@@ -62,10 +62,10 @@ namespace skAmazon2.Controllers
             {            
                     // Enter order information from form submission
                     order.UserID = GetUserID(User.Identity.Name);
-                    order.DeliveryAddressID = 5; //model.SelectedShippingAddress;
-                    order.PaymentMethodID = 3; //model.SelectedPaymentMethod; //3
+                    order.DeliveryAddressID = Convert.ToInt32(Request["Select Destination"]); //model.SelectedShippingAddress;
+                    order.PaymentMethodID = Convert.ToInt32(Request["Select Payment Method"]); //model.SelectedPaymentMethod; //3
                     order.OrderDate = DateTime.Now;
-                    order.ShippingOptionID = 2; //model.SelectedShippingOption; //2   
+                    order.ShippingOptionID = Convert.ToInt32(Request["Select Shipping Method"]); //model.SelectedShippingOption; //2   
 
                     //Save Order
                     storeDB.CustomerOrders.Add(order);
