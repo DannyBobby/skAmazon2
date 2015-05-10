@@ -50,7 +50,7 @@
                                     <h3 class="tile-title">@Html.DisplayFor(modelItem => item.ProductDescription)</h3>
                                     <p>Price: @Html.DisplayFor(modelItem => item.UnitPrice)</p>
                                     <a href=@Url.Action("Details", "Product", new { id = item.ItemID }) class="btn btn-primary btn-large btn-block">View Item</a>
-                                    <a class="btn btn-primary btn-large btn-block">Buy Now</a>                                    
+                                    <a href=@Url.Action("AddToCart", "ShoppingCart", new { id = item.ItemID }, "") class="btn btn-primary btn-large btn-block">Add to Cart</a>                                    
                                 </div>
                             </div>
                         }
