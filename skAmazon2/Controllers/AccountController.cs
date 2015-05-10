@@ -9,12 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using skAmazon2.Models;
+using skAmazon2.ViewModels;
 
 namespace skAmazon2.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        skAmazonEntities db = new skAmazonEntities();
+
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -124,7 +127,7 @@ namespace skAmazon2.Controllers
         //
         // GET: /Account/Manage
         public ActionResult Manage(ManageMessageId? message)
-        {
+        {     
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
@@ -186,6 +189,8 @@ namespace skAmazon2.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
 
         //
         // POST: /Account/ExternalLogin

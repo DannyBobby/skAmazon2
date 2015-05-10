@@ -41,7 +41,6 @@ namespace skAmazon2.Controllers
                                            select a).ToList();
 
             viewModel.ShippingOptions = (from o in storeDB.ShippingOptions
-                                         
                                          select o).ToList();
 
             // Get the user's Shopping Cart info
