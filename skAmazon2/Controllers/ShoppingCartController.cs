@@ -77,7 +77,21 @@ namespace skAmazon2.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
             ViewData["CartCount"] = cart.GetCount();
-            return PartialView("CartSummary");
+            return PartialView("_CartTable");
+        }
+
+        public ActionResult CartTable()
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            // Set up our ViewModel
+            var viewModel = new ShoppingCartViewModel
+            {
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
+            };
+
+            return PartialView("_CartTable", viewModel);
         }
 	}
 }

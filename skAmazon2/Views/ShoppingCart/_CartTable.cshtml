@@ -1,0 +1,65 @@
+﻿@model skAmazon2.ViewModels.ShoppingCartViewModel
+<div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr id="row-@item.RecordID">
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="#">@Html.ActionLink(item.Product.ProductDescription, "Details", "Product", new { id = item.ItemID }, null)</a></h4>
+                                    <h5 class="media-heading"> by <a href="#">@item.Product.Manufacturer.ManufName</a></h5>
+                                    <span>Status: </span><strong>
+                                        @if (item.Product.QoH > 0)
+                                        {
+                                            <span class="text-success">@item.Product.QoH left</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">Out of Stock</span>
+                                        }
+                                    </strong>
+                                    <br />
+                                    <a href="#" class="text-danger remove-item" data-id="@item.RecordID">Remove Item</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center">
+                            @item.Quantity
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@item.Product.UnitPrice.ToString("C")</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@((item.Product.UnitPrice * item.Quantity).ToString("C"))</strong></td>
+                    </tr>
+                }
+
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td><h5>Subtotal</h5></td>
+                    <td class="text-right"><h5><strong id="cart-total">@Model.CartTotal.ToString("C")</strong></h5></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td>
+                        <a type="button" class="btn btn-success" href=@Url.Action("AddressAndPayment","Checkout")>
+                            Checkout >>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
