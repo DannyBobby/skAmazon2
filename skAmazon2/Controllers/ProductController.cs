@@ -35,6 +35,7 @@ namespace skAmazon2.Controllers
             return View(product);            
         }
 
+        // This is where anything searched on the website is directed. Looks for similar to Product Description
         public ActionResult Search(string searchTerm)
         {
             var items = from i in db.Products select i;

@@ -35,23 +35,27 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
+                @* Header row for the Order View*@
                 <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
-                    </tr>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Total</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.CartItems)
-                    {
+                @* Fills in the rest of the table with all the items that have been selected for the cart
+                    The following <tr> will display the carts subtotal, shipping info, billing info, payment method, and total price of cart
+                    The blank <td> space the row out with blank areas to fill in the table where we dont need information *@
+                @foreach (var item in Model.CartItems)
+                {
                     <tr id="row-@item.RecordID">
                         <td class="col-sm-8 col-md-6">
                             <div class="media">
                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">@Html.ActionLink(item.Product.ProductDescription, "Details", "Product", new { id = item.ItemID }, null)</a></h4>
+                                    <h4 class="media-heading"><a href="#">@Html.ActionLink(item.Product.ProductDescription, "Details", "Product", new {id = item.ItemID}, null)</a></h4>
                                     <h5 class="media-heading"> by <a href="#">Brand Here</a></h5>
                                     <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
                                     <a href="#" class="RemoveLink" data-id="@item.RecordID">Remove Item</a>
@@ -62,52 +66,52 @@
                             @item.Quantity
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>@item.Product.UnitPrice</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>@(item.Product.UnitPrice * item.Quantity)</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@(item.Product.UnitPrice*item.Quantity)</strong></td>
                     </tr>
-                    }
+                }
 
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                        <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>@Model.CartTotal</strong></h5></td>
-                    </tr>
-                    
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td><h5>Subtotal</h5></td>
+                    <td class="text-right"><h5><strong>@Model.CartTotal</strong></h5></td>
+                </tr>
+
                 @*<tr>
                     <td> </td>
                 </tr>*@
-                    <tr>
-                        <td> <strong>Shipping Address: </strong>123 Main St Richmond, VA 23220 </td>
-                        <td> 3 Day  Standard Shipping </td>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-                    </tr>
-                    <tr>
-                        <td> <strong>Billing Address: </strong>Same as Shipping. </td>
-                        <td> <strong>Payment Method: </strong><img src="~/Content/visacard.gif" /> ending in 4534.</td>
-                        <td>
-                            <h3>Total</h3>
-                        </td>
-                        <td class="text-right">
-                            <h3>
-                                <strong>$31.53</strong>
-                            </h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                        <td>
-                            <button type="button" class="btn btn-danger">
-                                <span class="fa fa-pencil"></span> Modify Order
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success">
-                                Place Order <span class="fa fa-play"></span>
-                            </button>
-                        </td>
-                    </tr>
+                <tr>
+                    <td> <strong>Shipping Address: </strong>123 Main St Richmond, VA 23220 </td>
+                    <td> 3 Day Standard Shipping </td>
+                    <td><h5>Estimated shipping</h5></td>
+                    <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                </tr>
+                <tr>
+                    <td> <strong>Billing Address: </strong>Same as Shipping. </td>
+                    <td> <strong>Payment Method: </strong><img src="~/Content/visacard.gif"/> ending in 4534.</td>
+                    <td>
+                        <h3>Total</h3>
+                    </td>
+                    <td class="text-right">
+                        <h3>
+                            <strong>$31.53</strong>
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td>
+                        <button type="button" class="btn btn-danger">
+                            <span class="fa fa-pencil"></span> Modify Order
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success">
+                            Place Order <span class="fa fa-play"></span>
+                        </button>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

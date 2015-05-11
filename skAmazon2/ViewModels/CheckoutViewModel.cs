@@ -6,6 +6,8 @@ using skAmazon2.ViewModels;
 
 namespace skAmazon2.Models
 {
+
+    // this page binds together ApplicationUser to a Cart with Payment methods, shipping address, and shipping option
     [Bind(Exclude = "OrderId")]
     public partial class CheckOutViewModel
     {

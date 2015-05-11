@@ -3,8 +3,11 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@* Displays the details of the product that has been selected*@
 <div class="container-fluid">
     <div class="product-blurb row">
+        @* this would display different pictures of the product, if we had some stored*@
         <div class="product-images-carousel col-lg-8 col-sm-6 col-xs-12">
             <div class="carousel slide article-slide" id="product-images-carousel">
                 <div class="carousel-inner cont-slider">
@@ -37,6 +40,8 @@
                 </ol>
             </div>
         </div>
+
+        @* binds the product information to the page*@
         <div class="col-lg-4 col-sm-6 col-xs-12">
             <dl class="dl-horizontal">
                 <dt>
@@ -78,11 +83,11 @@
                 <dd>
                     @Html.DisplayFor(model => model.Category.CategoryDescription)
                 </dd>
-            </dl>  
-            
-            <p class="button">@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ItemID }, "")
+            </dl>
+
+            <p class="button">@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new {id = Model.ItemID}, "")
             </p>
-                      
+
         </div>
     </div>
     @Html.Partial("_Spacer")
