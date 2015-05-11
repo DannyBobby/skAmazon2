@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using skAmazon2.Models;
 using skAmazon2.ViewModels;
 
+// Sorry for the lack of comments. :( It was a mad dash for the finish line.
+
 namespace skAmazon2.Controllers
 {
     [Authorize]
