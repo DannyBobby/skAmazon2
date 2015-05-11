@@ -1,0 +1,29 @@
+﻿@using skAmazon2.Models
+@{
+    skAmazonEntities db = new skAmazonEntities();
+    var cart = ShoppingCart.GetCart(this.Context);
+    var cartItems = cart.GetCartItems();
+}
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="fa fa-shopping-cart"></span><span class="hidden-lg hidden-md hidden-sm"> Cart</span><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu navbar-dropdown">
+        @foreach (var item in cartItems)
+        {
+            <li class="cart-item">
+                <a href="#">
+                    <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
+                    <div class="cart-item-desc">
+                        <span class="cart-item-title">@item.Product</span><br />
+                        <span class="cart-item-qty">Quantity: @item.Quantity</span>
+                    </div>
+                </a>
+            </li>
+        }
+        <li class="divider"></li>
+        <li class="hidden-xs"><a href=@Url.Action("Index", "ShoppingCart") class="text-center">View Cart</a></li>
+        <li class="hidden-lg hidden-md hidden-sm"><a href=@Url.Action("Index", "ShoppingCart")>View Cart</a></li>
+    </ul>
+</li>
+

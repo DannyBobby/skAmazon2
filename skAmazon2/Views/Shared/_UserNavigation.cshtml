@@ -5,56 +5,20 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+    @*<ul class="nav navbar-nav navbar-right">
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+    </ul>*@
     }
         
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="fa fa-shopping-cart"></span><span class="hidden-lg hidden-md hidden-sm"> Cart</span><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu navbar-dropdown">
-                <li class="cart-item">
-                    <a href="#">
-                        <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
-                        <div class="cart-item-desc">
-                            <span class="cart-item-title">Item Title Goes Here!</span><br />
-                            <span class="cart-item-qty">Quantity: 1</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="cart-item">
-                    <a href="#">
-                        <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
-                        <div class="cart-item-desc">
-                            <span class="cart-item-title">A Second Item!</span><br />
-                            <span class="cart-item-qty">Quantity: 2</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="cart-item">
-                    <a href="#">
-                        <img src="http://www.ahf-net.com/images/emptycart.png" width="32" height="32" />
-                        <div class="cart-item-desc">
-                            <span class="cart-item-title">Really Long Item Name!</span><br />
-                            <span class="cart-item-qty">Quantity: 3</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li class="hidden-xs"><a href=@Url.Action("Index", "ShoppingCart") class="text-center">View Cart</a></li>
-                <li class="hidden-lg hidden-md hidden-sm"><a href="#viewCart">View Cart</a></li>
-            </ul>
-        </li>
+        @Html.Partial("_CartNav")
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span><span class="hidden-lg hidden-md hidden-sm"> User</span><span class="caret"></span></a>
             <ul class="dropdown-menu navbar-dropdown">
-                <li><a href="/ShoppingCart"><span class="fa fa-list-alt icon-left-menu"></span><span>Lists</span></a></li>
+                <li><a href=@Url.Action("Index", "ShoppingCart")><span class="fa fa-list-alt icon-left-menu"></span><span>Lists</span></a></li>
                 <li><a href="/Account/Manage"><span class="fa fa-cog icon-left-menu"></span><span>Account</span></a></li>
                 <li class="divider"></li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-lock icon-left-menu"></span><span>Log Out</span></a></li>
@@ -65,8 +29,8 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>        
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerLink"})</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</li>
     </ul>
 }
 
