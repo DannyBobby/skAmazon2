@@ -82,7 +82,8 @@ namespace skAmazon2.Controllers
             ViewData["CartCount"] = cart.GetCount();
             return PartialView("_CartTable");
         }
-
+        //
+        // GET: /ShoppingCart/CartTable
         public ActionResult CartTable()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -95,6 +96,21 @@ namespace skAmazon2.Controllers
             };
 
             return PartialView("_CartTable", viewModel);
+        }
+        //
+        // GET: /ShoppingCart/CartNav
+        public ActionResult CartNav()
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            // Set up our ViewModel
+            var viewModel = new ShoppingCartViewModel
+            {
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
+            };
+
+            return PartialView("_CartNav", viewModel);
         }
 	}
 }
