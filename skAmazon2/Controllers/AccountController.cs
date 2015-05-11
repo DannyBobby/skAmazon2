@@ -53,8 +53,11 @@ namespace skAmazon2.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    
-                    MigrateShoppingCart(model.UserName);
+
+                    if (ShoppingCart.GetCart(this.HttpContext) != null)
+                    {
+                        MigrateShoppingCart(model.UserName);
+                    }
 
                     return RedirectToLocal(returnUrl);
                 }
@@ -84,16 +87,26 @@ namespace skAmazon2.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {
+            {               
+
                 var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
 
-                    MigrateShoppingCart(model.UserName);
+                    if (ShoppingCart.GetCart(this.HttpContext) != null)
+                    {
+                        MigrateShoppingCart(model.UserName);
+                    }
+                    
+                    UpdateUser(model, user.Id);
 
-                    return RedirectToAction("Index", "Home");
+                    model.AddressID = CreateCustomerAddress(model, user.Id);
+
+                    model.PaymentMethodID = CreatePaymentMethod(model, user.Id);                    
+
+                    return RedirectToAction("Home", "Home");
                 }
                 else
                 {
@@ -104,6 +117,65 @@ namespace skAmazon2.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        public void UpdateUser(RegisterViewModel model, string userID)
+        {
+            var userQuery = (from u in db.ApplicationUsers
+                             where u.Id == userID
+                             select u);
+
+            foreach (ApplicationUser appUser in userQuery)
+            {
+                appUser.FirstName = model.FirstName;
+                appUser.LastName = model.LastName;
+            }
+
+            db.SaveChanges();
+        }
+
+        public int CreateCustomerAddress(RegisterViewModel model, string userID)
+        {
+            var address = new CustomerAddress();
+
+            using (var temp = new skAmazonEntities())
+            {
+                address.AddrLine1 = model.AddrLine1;
+                address.AddrLine2 = (model.AddrLine2 == null)? "" : model.AddrLine2;
+                address.City = model.City;
+                address.State = model.State;
+                address.ZIP = model.ZIP;
+                address.Country = model.Country;
+                address.DateCreated = System.DateTime.Now;
+                address.UserId = userID;
+
+                temp.CustomerAddresses.Add(address);
+                temp.SaveChanges();                
+            }
+
+            return address.AddressID;
+        }
+
+        public int CreatePaymentMethod(RegisterViewModel model, string userID)
+        {
+            var payMethod = new PaymentMethod();
+
+            using (var temp = new skAmazonEntities())
+            {
+                payMethod.PaymentDescription = model.PaymentDescription;
+                payMethod.DateCreated = System.DateTime.Now;
+                payMethod.PaymentType = model.PaymentType;
+                payMethod.BillingAddressID = model.AddressID;
+                payMethod.UserID = userID;
+                payMethod.CardNumber = model.CardNumber;
+                payMethod.ExpirationDate = model.ExpirationDate;
+                payMethod.SecurityCode = model.SecurityCode;
+
+                temp.PaymentMethods.Add(payMethod);
+                temp.SaveChanges();
+            }
+
+            return payMethod.PaymentMethodID;
+        }       
 
         //
         // POST: /Account/Disassociate

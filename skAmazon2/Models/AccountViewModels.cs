@@ -72,19 +72,26 @@ namespace skAmazon2.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [ScaffoldColumn(false)]
+        public int AddressID { get; set; }
+
         [Required(ErrorMessage = "Address is required")]
-        [StringLength(70)]
+        [StringLength(50)]
+        [DisplayName("Address Line 1")]
         public string AddrLine1 { get; set; }
 
-        [StringLength(70)]
+        [StringLength(50)]
+        [DisplayName("Address Line 2")]
         public string AddrLine2 { get; set; }
 
         [Required(ErrorMessage = "City is required")]
-        [StringLength(40)]
+        [StringLength(50)]
+        [DisplayName("City")]
         public string City { get; set; }
 
         [Required(ErrorMessage = "State is required")]
-        [StringLength(40)]
+        [StringLength(50)]
+        [DisplayName("State")]
         public string State { get; set; }
 
         [Required(ErrorMessage = "ZIP is required")]
@@ -94,33 +101,41 @@ namespace skAmazon2.Models
 
         [Required(ErrorMessage = "Country is required")]
         [DisplayName("Country")]
-        [StringLength(40)]
+        [StringLength(50)]
         public string Country { get; set; }
 
         [ScaffoldColumn(false)]
         public System.DateTime AddressDateCreated { get; set; }
 
+        [ScaffoldColumn(false)]
+        public int PaymentMethodID { get; set; }
+
         [Required(ErrorMessage = "Payment Method Description is Required")]
         [DisplayName("Payment Method Description")]
-        [StringLength(40)]
+        [StringLength(50)]
         public string PaymentDescription { get; set; }
 
         [Required(ErrorMessage = "Card Number is Required")]
+        [DisplayName("Card Number")]
         [StringLength(20)]
-        public Nullable<int> CardNumber { get; set; }
+        public string CardNumber { get; set; }
 
         [Required(ErrorMessage = "Expiration Date is Required")]
         [DataType(DataType.Date)]
+        [DisplayName("Expiration Date")]
         public Nullable<System.DateTime> ExpirationDate { get; set; }
 
         [Required(ErrorMessage = "Security Code is Required")]
+        [DisplayName("Security Code")]
         [StringLength(10)]
-        public Nullable<int> SecurityCode { get; set; }
+        public string SecurityCode { get; set; }
 
         [ScaffoldColumn(false)]
         public System.DateTime PaymentDateCreated { get; set; }
 
         [Required(ErrorMessage = "Payment Type (VISA, MasterCard, etc.) is required")]
+        [StringLength(50)]
+        [DisplayName("Payment Type (Visa, AMEX, etc.)")]
         public string PaymentType { get; set; }
 
 
