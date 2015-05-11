@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using skAmazon2.Models;
 
+// The code for this controller was borrowed HEAVILY from the 
+// MVC music store code.
+
 namespace skAmazon2.Controllers
 {
     [Authorize]

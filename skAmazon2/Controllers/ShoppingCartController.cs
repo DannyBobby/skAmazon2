@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using skAmazon2.Models;
 using skAmazon2.ViewModels;
 
+// The code for this controller was borrowed HEAVILY from the 
+// MVC music store code.
+
 namespace skAmazon2.Controllers
 {
     public class ShoppingCartController : Controller
@@ -30,7 +33,7 @@ namespace skAmazon2.Controllers
         // GET: /Store/AddToCart/5
         public ActionResult AddToCart(int id)
         {
-            // Retrieve the album from the database
+            // Retrieve the product from the database
             var addedProduct = storeDB.Products
                 .Single(product => product.ItemID == id);
 
